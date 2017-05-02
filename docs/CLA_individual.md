@@ -1,6 +1,6 @@
           International Business Machines, Inc. (IBM)
      Individual Contributor License Agreement ("Agreement")
-            http://www.github.org/PDS/docs/
+            https://github.com/linux-on-ibm-z/PDS/tree/master/docs
 
 Thank you for your interest in the PDS project ("Package Distribution Search").
 
