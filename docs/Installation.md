@@ -34,7 +34,6 @@ Note: make sure you are logged in as user with sudo permissions
         cd /opt/
         sudo git clone https://github.com/linux-on-ibm-z/PDS.git
         cd PDS
-        sudo git checkout v1.0
 
 Note: In case PDS code is already checked out, but there is a new update to be fetched from repository, it should be updated as
 
