@@ -13,7 +13,7 @@ Note: make sure you are logged in as user with sudo permissions
         sudo apt-get install -y apache2 libapache2-mod-wsgi
 
 ### Step 2: Configure Apache to execute Flask code using WSGI
- Copy the apache configuration file from /opt/PDS/src/config/pds.conf into apache conf.d folder
+ Copy the apache configuration file from /opt/PDS/src/config/pds.conf into respective apache configuration folder as below
 
 * SLES:
 
