@@ -26,7 +26,7 @@ Note: make sure you are logged in as user with sudo permissions
 
 ### Step 2: Install Python dependencies libraries
 
-        sudo pip install 'cryptography==1.4' Flask launchpadlib simplejson logging robotframework robotframework-httplibrary
+        sudo pip install 'cryptography==1.4' Flask launchpadlib simplejson logging
 
 
 ###  Step 3: Checkout the code-base from gitlab, into /opt/ folder
@@ -47,23 +47,37 @@ Note: In case PDS code is already checked out, but there is a new update to be f
 ###  Step 5: Copy the init.d script to start/stop/restart PDS application
         sudo chmod 755 -R /opt/PDS/src/setup
         cd /opt/PDS/src/setup
-        sudo ./create_initid_script.sh    
+        sudo ./create_initid_script.sh
+
+###  Step 6: Enable pds service
+* RHEL:
+
+        sudo systemctl reload pds
+
+* SLES:
+
+        sudo systemctl reload pds
+
+* Ubuntu:
+
+        sudo initctl reload-configuration
+
         
-###  Step 6: Start the Flask server as below
+###  Step 7: Start the Flask server as below
 
         sudo service pds start
 
-###  Step 7: Verify that the server is up, by running the application in browser
+###  Step 8: Verify that the server is up, by running the application in browser
         http://server_ip_or_fully_qualified_domain_name:port_number/pds
         
         Where port is the application port set in config.py. By default its 5000
 
-###  Step 8: (Optional) Custom configuration
+###  Step 9: (Optional) Custom configuration
 Update configuration file at /opt/PDS/src/config/config.py for custom settings like changing default location of "distro data" or enabling/disabling logs
 
 
 ### _**Note:**_
-* PDS can be deployed on Apache server by following steps from [Apache deployment](ApacheDeployment.md)
+* Alternatively we can also deploy PDS on Apache server by following steps from [Apache deployment](ApacheDeployment.md)
 
 # Enabling and disabling debug logging
 

@@ -14,14 +14,21 @@ Note: make sure you are logged in as user with sudo permissions
 
 ### Step 2: Configure Apache to execute Flask code using WSGI
  Copy the apache configuration file from /opt/PDS/src/config/pds.conf into apache conf.d folder
-    
-    sudo cp -f /opt/PDS/src/config/pds.conf /etc/apache2/conf.d/pds.conf
+
+* SLES:
+
+        sudo cp -f /opt/PDS/src/config/pds.conf /etc/apache2/conf.d/pds.conf
+
+* Ubuntu:
+
+        sudo cp -f /opt/PDS/src/config/pds.conf /etc/apache2/sites-enabled/pds.conf
+        sudo mv /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/z-000-default.conf
 
 ### Step 3: Create new user and group for apache
     sudo useradd apache
     sudo groupadd apache
 
-### Step 4: Enable authorization module in apache configuration
+### Step 4: (**SLES only**) Enable authorization module in apache configuration
     sudo a2enmod mod_access_compat
 
 ### Step 5: Set appropriate folder and file permission on /opt/PDS/ folder for apache
