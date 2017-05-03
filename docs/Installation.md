@@ -32,7 +32,7 @@ Note: make sure you are logged in as user with sudo permissions
 ###  Step 3: Checkout the code-base from gitlab, into /opt/ folder
 
         cd /opt/
-        sudo git clone git@github.rtp.raleigh.ibm.com:cinderel-ca/PDS.git
+        sudo git clone https://github.com/linux-on-ibm-z/PDS.git
         cd PDS
         sudo git checkout v1.0
 
