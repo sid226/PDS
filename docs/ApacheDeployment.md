@@ -36,3 +36,9 @@ Note: make sure you are logged in as user with sudo permissions
 
 ### Step 6: Start/Restart Apache service
     sudo apachectl restart
+
+
+###  Step 7: Verify that the server is up, by running the application in browser
+        http://server_ip_or_fully_qualified_domain_name:port_number/pds
+
+        Where port is the application port set in pds.conf at Step 2. By default its 80
