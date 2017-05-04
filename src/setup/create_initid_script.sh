@@ -1,3 +1,5 @@
+#!/bin/bash
+
 PDS_PATH=/opt/PDS/src/setup
 
 if [[ (-f /etc/SUSE-brand) || (-f /etc/SuSE-release) ]];then
