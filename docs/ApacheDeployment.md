@@ -1,13 +1,15 @@
 # Deploy PDS on Apache server
 
+The instructions provided below specify the steps for SLES 12 SP1/12 SP2 and Ubuntu 16.04/16.10/17.04:
+
 ### Step 1: Install Apache web server and mod_wsgi for python support
 Note: make sure you are logged in as user with sudo permissions
 
-* SLES:
+* SLES (12 SP1, 12 SP2):
 
         sudo zypper install -y apache2 apache2-devel apache2-worker apache2-mod_wsgi which w3m
 
-* Ubuntu:
+* For Ubuntu (16.04, 16.10, 17.04):
 
         sudo apt-get update
         sudo apt-get install -y apache2 libapache2-mod-wsgi
@@ -15,11 +17,11 @@ Note: make sure you are logged in as user with sudo permissions
 ### Step 2: Configure Apache to execute Flask code using WSGI
  Copy the apache configuration file from /opt/PDS/src/config/pds.conf into respective apache configuration folder as below
 
-* SLES:
+* SLES (12 SP1, 12 SP2):
 
         sudo cp -f /opt/PDS/src/config/pds.conf /etc/apache2/conf.d/pds.conf
 
-* Ubuntu:
+* For Ubuntu (16.04, 16.10, 17.04):
 
         sudo cp -f /opt/PDS/src/config/pds.conf /etc/apache2/sites-enabled/pds.conf
         sudo mv /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/z-000-default.conf
@@ -28,7 +30,7 @@ Note: make sure you are logged in as user with sudo permissions
     sudo useradd apache
     sudo groupadd apache
 
-### Step 4: (**SLES only**) Enable authorization module in apache configuration
+### Step 4: (Only For SLES 12 SP1, 12 SP2) Enable authorization module in apache configuration
     sudo a2enmod mod_access_compat
 
 ### Step 5: Set appropriate folder and file permission on /opt/PDS/ folder for apache

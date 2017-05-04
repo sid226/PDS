@@ -1,19 +1,16 @@
 # Steps for setting up PDS application on server
 
+The instructions provided below specify the steps for SLES 11 SP4/12/12 SP1/12 SP2 and Ubuntu 16.04/16.10/17.04:
+
 ### Step 1: Install pre-requisite dependencies
 Note: make sure you are logged in as user with sudo permissions
 
-* RHEL:
-
-        sudo yum install -y python python-setuptools gcc git libffi-devel python-devel openssl openssl-devel cronie apache2
-        sudo easy_install pip
-
-* SLES:
+* For SLES (11 SP4, 12, 12 SP1, 12 SP2):
 
         sudo zypper install -y python python-setuptools gcc git libffi-devel python-devel openssl openssl-devel cronie python-xml pyxml apache2 aaa_base apache2-devel tar wget apache2-worker
         sudo easy_install pip
 
-* Ubuntu:
+* For Ubuntu (16.04, 16.10, 17.04):
 
         sudo apt-get update
         sudo apt-get install -y python python-pip gcc git python-dev libssl-dev libffi-dev cron python-lxml apache2
@@ -50,15 +47,12 @@ Note: In case PDS code is already checked out, but there is a new update to be f
         sudo ./create_initid_script.sh
 
 ###  Step 6: Enable pds service
-* RHEL:
+
+* For SLES (11 SP4, 12, 12 SP1, 12 SP2):
 
         sudo systemctl reload pds
 
-* SLES:
-
-        sudo systemctl reload pds
-
-* Ubuntu:
+* For Ubuntu (16.04, 16.10, 17.04):
 
         sudo initctl reload-configuration
 
