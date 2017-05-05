@@ -23,7 +23,6 @@ _**NOTE:**_
 
         sudo zypper install -y apache2 apache2-devel apache2-worker apache2-mod_wsgi
 
-**Note:** 
 * if "/usr/local/bin" is not part of $PATH add it to the path:
 
         echo $PATH
@@ -36,7 +35,7 @@ _**NOTE:**_
         sudo git clone https://github.com/linux-on-ibm-z/PDS.git
         cd PDS
 
-Note: In case PDS code is already checked out, but there is a new update to be fetched from repository, it should be updated as
+Note: In case PDS code is already checked out, do the following for latest updates
 
         cd /opt/PDS
         sudo git pull origin master
@@ -98,9 +97,28 @@ Note: In case PDS code is already checked out, but there is a new update to be f
 
 _**NOTE:**_ 
 
-* For SLES (11 SP4, 12) the `port_number` will be 5000 by default
-* For SLES (12 SP1, 12 SP2) and Ubuntu (16.04, 16.10, 17.04) `port_number` will be 80 by default
+* For SLES (11 SP4, 12) by default the port_number will be 5000
+* For SLES (12 SP1, 12 SP2) and Ubuntu (16.04, 16.10, 17.04)  by default the port_number will be 80
 
 ###  Step 10: (Optional) Custom configuration
-Update configuration file at `/opt/PDS/src/config/config.py` for custom settings like changing default location of "distro data" or enabling/disabling logs
+Update configuration file at `/opt/PDS/src/config/config.py` for custom settings. Below is the list of parameters:
 
+        <DATA_FILE_LOCATION> - Location of folder containing all distribution specific JSON data
+        
+        <LOG_FILE_LOCATION> - Location of folder containing PDS logs
+        
+        <enable_proxy_authentication> - Flag enabling/disabling proxy based network access
+        
+        <proxy_user> - Proxy server user name
+        
+        <proxy_password> - Proxy server password
+        
+        <proxy_server> - Proxy server IP/fully qualified domain name
+        
+        <proxy_port> - Proxy port number
+        
+        <local_setup> - Flag enabling/disabling debugging.
+        
+        <server_host> - IP/fully qualified domain name of server where PDS application will be deployed
+        
+        <server_port> - PDS port on which application will be accessible to end users
