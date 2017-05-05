@@ -101,7 +101,7 @@ _**NOTE:**_
 * For SLES (12 SP1, 12 SP2) and Ubuntu (16.04, 16.10, 17.04)  by default the port_number will be 80
 
 ###  Step 6: (Optional) Custom configuration
-Update configuration file at `/opt/PDS/src/config/config.py` for custom settings. Below is the list of parameters:
+Following configuration settings can be managed in `/opt/PDS/src/config/config.py`:
 
         <DATA_FILE_LOCATION> - Location of folder containing all distribution specific JSON data
         
@@ -122,3 +122,17 @@ Update configuration file at `/opt/PDS/src/config/config.py` for custom settings
         <server_host> - IP/fully qualified domain name of server where PDS application will be deployed
         
         <server_port> - PDS port on which application will be accessible to end users
+
+In case any of the parameters are updated, the server neds to be restarted:
+
+* SLES (12 SP1, 12 SP2) and Ubuntu (16.04, 16.10, 17.04):
+
+    #### Start/Restart Apache service
+
+        sudo apachectl restart
+
+* SLES (11 SP4, 12):
+
+    #### Start the Flask server as below
+
+        sudo service pds start
