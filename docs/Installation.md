@@ -100,7 +100,7 @@ _**NOTE:**_
 * For SLES (11 SP4, 12) by default the port_number will be 5000
 * For SLES (12 SP1, 12 SP2) and Ubuntu (16.04, 16.10, 17.04)  by default the port_number will be 80
 
-###  Step 10: (Optional) Custom configuration
+###  Step 6: (Optional) Custom configuration
 Update configuration file at `/opt/PDS/src/config/config.py` for custom settings. Below is the list of parameters:
 
         <DATA_FILE_LOCATION> - Location of folder containing all distribution specific JSON data
