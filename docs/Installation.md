@@ -19,10 +19,9 @@ _**NOTE:**_
         sudo apt-get install -y python python-pip gcc git python-dev libssl-dev libffi-dev cron python-lxml apache2 libapache2-mod-wsgi
         sudo pip install 'cryptography==1.4' Flask launchpadlib simplejson logging
 
-* Apache:
-    * For SLES (12 SP1, 12 SP2):
+* For SLES (12 SP1, 12 SP2):
 
-            sudo zypper install -y apache2 apache2-devel apache2-worker apache2-mod_wsgi
+        sudo zypper install -y apache2 apache2-devel apache2-worker apache2-mod_wsgi
 
 **Note:** 
 * if "/usr/local/bin" is not part of $PATH add it to the path:
@@ -30,9 +29,6 @@ _**NOTE:**_
         echo $PATH
         export PATH=/usr/local/bin:$PATH
         sudo sh -c "echo 'export PATH=/usr/local/bin:$PATH' > /etc/profile.d/alternate_install_path.sh"
-
-* On SLES 11 SP4 and SLES 12 module apache2-mod_wsgi is not supported completely.
-
 
 ###  Step 2: Checkout the source code, into /opt/ folder
 
@@ -53,53 +49,48 @@ Note: In case PDS code is already checked out, but there is a new update to be f
 
 * SLES (11 SP4, 12):
 
-    * Copy the init.d script to start/stop/restart PDS application
+    #### Copy the init.d script to start/stop/restart PDS application
 
-        ```
         sudo chmod 755 -R /opt/PDS/src/setup
         cd /opt/PDS/src/setup
         sudo ./create_initid_script.sh
-        ```
 
-    * Enable pds service
+    #### Enable pds service
 
-        ```sudo systemctl reload pds```
+        sudo systemctl reload pds
 
-    * Start the Flask server as below
+    #### Start the Flask server as below
 
-        ```sudo service pds start```
+        sudo service pds start
 
 * SLES (12 SP1, 12 SP2) and Ubuntu (16.04, 16.10, 17.04):
 
-    * Copy the apache configuration file from `/opt/PDS/src/config/pds.conf` into respective apache configuration folder as below
+    #### Copy the apache configuration file from `/opt/PDS/src/config/pds.conf` into respective apache configuration folder as below
+    * SLES (12 SP1, 12 SP2):
 
-        * SLES (12 SP1, 12 SP2):
+            sudo cp -f /opt/PDS/src/config/pds.conf /etc/apache2/conf.d/pds.conf
 
-                sudo cp -f /opt/PDS/src/config/pds.conf /etc/apache2/conf.d/pds.conf
+    * For Ubuntu (16.04, 16.10, 17.04):
 
-        * For Ubuntu (16.04, 16.10, 17.04):
+            sudo cp -f /opt/PDS/src/config/pds.conf /etc/apache2/sites-enabled/pds.conf
+            sudo mv /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/z-000-default.conf
 
-                sudo cp -f /opt/PDS/src/config/pds.conf /etc/apache2/sites-enabled/pds.conf
-                sudo mv /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/z-000-default.conf
+    #### Create new user and group for apache
 
-    * Create new user and group for apache
-
-        ```
         sudo useradd apache
         sudo groupadd apache
-        ```
 
-    * Enable authorization module in apache configuration
+    #### Enable authorization module in apache configuration
 
-        ```sudo a2enmod mod_access_compat```
+        sudo a2enmod mod_access_compat
 
-    * Set appropriate folder and file permission on /opt/PDS/ folder for apache
+    #### Set appropriate folder and file permission on /opt/PDS/ folder for apache
 
-        ```sudo chown -R apache:apache /opt/PDS/```
+        sudo chown -R apache:apache /opt/PDS/
 
-    * Start/Restart Apache service
+    #### Start/Restart Apache service
 
-        ```sudo apachectl restart```
+        sudo apachectl restart
 
 ###  Step 5: Verify that the PDS server is up and running
 
