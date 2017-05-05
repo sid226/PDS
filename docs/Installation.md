@@ -128,14 +128,16 @@ Following configuration settings can be managed in `/opt/PDS/src/config/config.p
 
 In case any of the parameters are updated, the server neds to be restarted:
 
+* SLES (11 SP4, 12):
+
+    #### Start the Flask server as below
+
+        sudo service pds start
+
 * SLES (12 SP1, 12 SP2) and Ubuntu (16.04, 16.10, 17.04):
 
     #### Start/Restart Apache service
 
         sudo apachectl restart
 
-* SLES (11 SP4, 12):
 
-    #### Start the Flask server as below
-
-        sudo service pds start
