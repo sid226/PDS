@@ -7,29 +7,22 @@ _**NOTE:**_
 
 ### Step 1: Install pre-requisite
 
-* Basic:
-    * For SLES (11 SP4, 12, 12 SP1, 12 SP2):
+* For SLES (11 SP4, 12, 12 SP1, 12 SP2):
 
-            sudo zypper install -y python python-setuptools gcc git libffi-devel python-devel openssl openssl-devel cronie python-xml pyxml tar wget aaa_base which w3m
-            sudo easy_install pip
+        sudo zypper install -y python python-setuptools gcc git libffi-devel python-devel openssl openssl-devel cronie python-xml pyxml tar wget aaa_base which w3m
+        sudo easy_install pip
+        sudo pip install 'cryptography==1.4' Flask launchpadlib simplejson logging
 
-    * For Ubuntu (16.04, 16.10, 17.04):
+* For Ubuntu (16.04, 16.10, 17.04):
 
-            sudo apt-get update
-            sudo apt-get install -y python python-pip gcc git python-dev libssl-dev libffi-dev cron python-lxml
+        sudo apt-get update
+        sudo apt-get install -y python python-pip gcc git python-dev libssl-dev libffi-dev cron python-lxml apache2 libapache2-mod-wsgi
+        sudo pip install 'cryptography==1.4' Flask launchpadlib simplejson logging
 
 * Apache:
     * For SLES (12 SP1, 12 SP2):
 
             sudo zypper install -y apache2 apache2-devel apache2-worker apache2-mod_wsgi
-
-    * For Ubuntu (16.04, 16.10, 17.04):
-
-            sudo apt-get install -y apache2 libapache2-mod-wsgi
-
-* Python
-
-        sudo pip install 'cryptography==1.4' Flask launchpadlib simplejson logging
 
 **Note:** 
 * if "/usr/local/bin" is not part of $PATH add it to the path:
@@ -56,77 +49,67 @@ Note: In case PDS code is already checked out, but there is a new update to be f
 
         sudo sh -c "echo 'export PYTHONPATH=/opt/PDS/src/classes:/opt/PDS/src/config:$PYTHONPATH' > /etc/profile.d/pds.sh"
 
-### Step 4: Configure Apache to execute Flask code using WSGI
- Copy the apache configuration file from `/opt/PDS/src/config/pds.conf` into respective apache configuration folder as below
+### Step 4: Install and configure PDS
 
-* SLES (12 SP1, 12 SP2):
+* SLES (11 SP4, 12):
 
-        sudo cp -f /opt/PDS/src/config/pds.conf /etc/apache2/conf.d/pds.conf
+    * Copy the init.d script to start/stop/restart PDS application
 
-* For Ubuntu (16.04, 16.10, 17.04):
+        ```
+        sudo chmod 755 -R /opt/PDS/src/setup
+        cd /opt/PDS/src/setup
+        sudo ./create_initid_script.sh
+        ```
 
-        sudo cp -f /opt/PDS/src/config/pds.conf /etc/apache2/sites-enabled/pds.conf
-        sudo mv /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/z-000-default.conf
+    * Enable pds service
 
-### Step 5: Create new user and group for apache(Only For SLES 12 SP1, 12 SP2 and Ubuntu 16.04, 16.10, 17.04)
-    sudo useradd apache
-    sudo groupadd apache
+        ```sudo systemctl reload pds```
 
-### Step 6: Enable authorization module in apache configuration (Only For SLES 12 SP1, 12 SP2)
-    sudo a2enmod mod_access_compat
+    * Start the Flask server as below
 
-### Step 7: Set appropriate folder and file permission on /opt/PDS/ folder for apache (Only For SLES 12 SP1, 12 SP2 and Ubuntu 16.04, 16.10, 17.04)
-    sudo chown -R apache:apache /opt/PDS/
+        ```sudo service pds start```
 
-### Step 8: Start/Restart Apache service (Only For SLES 12 SP1, 12 SP2 and Ubuntu 16.04, 16.10, 17.04)
+* SLES (12 SP1, 12 SP2) and Ubuntu (16.04, 16.10, 17.04):
 
-    sudo apachectl restart
+    * Copy the apache configuration file from `/opt/PDS/src/config/pds.conf` into respective apache configuration folder as below
 
-###  Step 9: Verify that the PDS server is up and running
+        * SLES (12 SP1, 12 SP2):
 
-    http://server_ip_or_fully_qualified_domain_name/pds
+                sudo cp -f /opt/PDS/src/config/pds.conf /etc/apache2/conf.d/pds.conf
+
+        * For Ubuntu (16.04, 16.10, 17.04):
+
+                sudo cp -f /opt/PDS/src/config/pds.conf /etc/apache2/sites-enabled/pds.conf
+                sudo mv /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/z-000-default.conf
+
+    * Create new user and group for apache
+
+        ```
+        sudo useradd apache
+        sudo groupadd apache
+        ```
+
+    * Enable authorization module in apache configuration
+
+        ```sudo a2enmod mod_access_compat```
+
+    * Set appropriate folder and file permission on /opt/PDS/ folder for apache
+
+        ```sudo chown -R apache:apache /opt/PDS/```
+
+    * Start/Restart Apache service
+
+        ```sudo apachectl restart```
+
+###  Step 5: Verify that the PDS server is up and running
+
+```http://server_ip_or_fully_qualified_domain_name:port_number/pds```
+
+_**NOTE:**_ 
+
+* For SLES (11 SP4, 12) the `port_number` will be 5000 by default
+* For SLES (12 SP1, 12 SP2) and Ubuntu (16.04, 16.10, 17.04) `port_number` will be 80 by default
 
 ###  Step 10: (Optional) Custom configuration
 Update configuration file at `/opt/PDS/src/config/config.py` for custom settings like changing default location of "distro data" or enabling/disabling logs
 
-### Below are the steps for deploying PDS on Flask server (Only For SLES 11 SP4, 12)
-
-###  Step 1: Copy the init.d script to start/stop/restart PDS application
-    sudo chmod 755 -R /opt/PDS/src/setup
-    cd /opt/PDS/src/setup
-    sudo ./create_initid_script.sh
-
-###  Step 2: Enable pds service
-
-    sudo systemctl reload pds
-        
-###  Step 3: Start the Flask server as below
-
-    sudo service pds start
-
-###  Step 4: Verify that the server is up, by running the application in browser
-        http://server_ip_or_fully_qualified_domain_name:port_number/pds
-        
-        Where port is the application port set in config.py. By default its 5000
-
-# Enabling and disabling debug logging
-
-By default logging is disabled. To enable logs, following steps need to be followed:
-
-### Step 1: Edit the file `/opt/PDS/src/config/config.py` as shown below:
-```diff
-@@ -12,7 +12,7 @@
--local_setup = False
-+local_setup = True
-
-```
-### Step 2: Set `LOG_FILE_LOCATION` (Optional).
-
-The following is the default location for data file and log file respectively:
-
-    DATA_FILE_LOCATION = '/opt/PDS/src/distro_data'
-    LOG_FILE_LOCATION = '/opt/PDS/log/pds.log'
-
-### Step 3: Restart PDS application and the logs will be generated at the location configured in above step.
-
-    sudo service pds restart
