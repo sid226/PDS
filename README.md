@@ -5,11 +5,11 @@ Package Distro Search tool (abbreviated as PDS), allows to perform package searc
 
 # Documentation
 
-Documentation like how to add extra distro support are available in the docs directory. 
+Documentation like how to add extra distro support are available in the docs directory [here](docs/Adding_new_distros.md). 
 
 # Installation
 
-Instructions is available in the docs directory.
+Instructions to install can be found in the docs directory [here](docs/Installation.md).
 
 # License
 
