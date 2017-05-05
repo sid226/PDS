@@ -5,7 +5,7 @@ The instructions provided below specify the steps for SLES 11 SP4/12/12 SP1/12 S
 _**NOTE:**_
 * make sure you are logged in as user with sudo permissions
 
-### Step 1: Install pre-requisite
+### Step 1: Install prerequisite
 
 * For SLES (11 SP4, 12, 12 SP1, 12 SP2):
 
