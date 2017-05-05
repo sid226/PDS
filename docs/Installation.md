@@ -7,7 +7,7 @@ _**NOTE:**_
 
 ### Step 1: Install prerequisite
 
-* For SLES (11 SP4, 12, 12 SP1, 12 SP2):
+* For SLES (11 SP4, 12):
 
         sudo zypper install -y python python-setuptools gcc git libffi-devel python-devel openssl openssl-devel cronie python-xml pyxml tar wget aaa_base which w3m
         sudo easy_install pip
@@ -21,6 +21,9 @@ _**NOTE:**_
 
 * For SLES (12 SP1, 12 SP2):
 
+        sudo zypper install -y python python-setuptools gcc git libffi-devel python-devel openssl openssl-devel cronie python-xml pyxml tar wget aaa_base which w3m
+        sudo easy_install pip
+        sudo pip install 'cryptography==1.4' Flask launchpadlib simplejson logging
         sudo zypper install -y apache2 apache2-devel apache2-worker apache2-mod_wsgi
 
 * if "/usr/local/bin" is not part of $PATH add it to the path:
