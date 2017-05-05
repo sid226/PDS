@@ -5,40 +5,43 @@ The instructions provided below specify the steps for SLES 11 SP4/12/12 SP1/12 S
 _**NOTE:**_
 * make sure you are logged in as user with sudo permissions
 
-### Step 1: Install pre-requisite dependencies
+### Step 1: Install pre-requisite
 
-* For SLES (11 SP4, 12, 12 SP1, 12 SP2):
+* Basic:
+    * For SLES (11 SP4, 12, 12 SP1, 12 SP2):
 
-        sudo zypper install -y python python-setuptools gcc git libffi-devel python-devel openssl openssl-devel cronie python-xml pyxml tar wget aaa_base which w3m
-        sudo easy_install pip
+            sudo zypper install -y python python-setuptools gcc git libffi-devel python-devel openssl openssl-devel cronie python-xml pyxml tar wget aaa_base which w3m
+            sudo easy_install pip
 
-* For Ubuntu (16.04, 16.10, 17.04):
+    * For Ubuntu (16.04, 16.10, 17.04):
 
-        sudo apt-get update
-        sudo apt-get install -y python python-pip gcc git python-dev libssl-dev libffi-dev cron python-lxml
+            sudo apt-get update
+            sudo apt-get install -y python python-pip gcc git python-dev libssl-dev libffi-dev cron python-lxml
 
-**Note:** if "/usr/local/bin" is not part of $PATH add it to the path:
+* Apache:
+    * For SLES (12 SP1, 12 SP2):
+
+            sudo zypper install -y apache2 apache2-devel apache2-worker apache2-mod_wsgi
+
+    * For Ubuntu (16.04, 16.10, 17.04):
+
+            sudo apt-get install -y apache2 libapache2-mod-wsgi
+
+* Python
+
+        sudo pip install 'cryptography==1.4' Flask launchpadlib simplejson logging
+
+**Note:** 
+* if "/usr/local/bin" is not part of $PATH add it to the path:
 
         echo $PATH
         export PATH=/usr/local/bin:$PATH
         sudo sh -c "echo 'export PATH=/usr/local/bin:$PATH' > /etc/profile.d/alternate_install_path.sh"
 
-### Step 2: Install Apache package and dependencies
-* For SLES (12 SP1, 12 SP2):
-
-        sudo zypper install -y apache2 apache2-devel apache2-worker apache2-mod_wsgi
-
-* For Ubuntu (16.04, 16.10, 17.04):
-
-        sudo apt-get install -y apache2 libapache2-mod-wsgi
-        
-
-### Step 3: Install Python dependencies libraries
-
-        sudo pip install 'cryptography==1.4' Flask launchpadlib simplejson logging
+* On SLES 11 SP4 and SLES 12 module apache2-mod_wsgi is not supported completely.
 
 
-###  Step 4: Checkout the source code, into /opt/ folder
+###  Step 2: Checkout the source code, into /opt/ folder
 
         cd /opt/
         sudo git clone https://github.com/linux-on-ibm-z/PDS.git
@@ -49,11 +52,11 @@ Note: In case PDS code is already checked out, but there is a new update to be f
         cd /opt/PDS
         sudo git pull origin master
 
-###  Step 5: Set Environment variables
+###  Step 3: Set Environment variables
 
         sudo sh -c "echo 'export PYTHONPATH=/opt/PDS/src/classes:/opt/PDS/src/config:$PYTHONPATH' > /etc/profile.d/pds.sh"
 
-### Step 6: Configure Apache to execute Flask code using WSGI
+### Step 4: Configure Apache to execute Flask code using WSGI
  Copy the apache configuration file from `/opt/PDS/src/config/pds.conf` into respective apache configuration folder as below
 
 * SLES (12 SP1, 12 SP2):
@@ -65,39 +68,39 @@ Note: In case PDS code is already checked out, but there is a new update to be f
         sudo cp -f /opt/PDS/src/config/pds.conf /etc/apache2/sites-enabled/pds.conf
         sudo mv /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/z-000-default.conf
 
-### Step 7: Create new user and group for apache
+### Step 5: Create new user and group for apache(Only For SLES 12 SP1, 12 SP2 and Ubuntu 16.04, 16.10, 17.04)
     sudo useradd apache
     sudo groupadd apache
 
-### Step 8: (Only For SLES 12 SP1, 12 SP2) Enable authorization module in apache configuration
+### Step 6: Enable authorization module in apache configuration (Only For SLES 12 SP1, 12 SP2)
     sudo a2enmod mod_access_compat
 
-### Step 9: Set appropriate folder and file permission on /opt/PDS/ folder for apache
+### Step 7: Set appropriate folder and file permission on /opt/PDS/ folder for apache (Only For SLES 12 SP1, 12 SP2 and Ubuntu 16.04, 16.10, 17.04)
     sudo chown -R apache:apache /opt/PDS/
 
-### Step 10: Start/Restart Apache service
+### Step 8: Start/Restart Apache service (Only For SLES 12 SP1, 12 SP2 and Ubuntu 16.04, 16.10, 17.04)
 
     sudo apachectl restart
 
-###  Step 11: Verify that the server is up, by running the application in browser, by default application runs on port 80
+###  Step 9: Verify that the PDS server is up and running
 
-    http://server_ip_or_fully_qualified_domain_name:port_number/pds
+    http://server_ip_or_fully_qualified_domain_name/pds
 
-###  Step 12: (Optional) Custom configuration
+###  Step 10: (Optional) Custom configuration
 Update configuration file at `/opt/PDS/src/config/config.py` for custom settings like changing default location of "distro data" or enabling/disabling logs
 
-### Below are the steps for deploying PDS on Flask server(Not recomended)
+### Below are the steps for deploying PDS on Flask server (Only For SLES 11 SP4, 12)
 
-###  Step 1: (Only For SLES 11 SP4, 12) Copy the init.d script to start/stop/restart PDS application
+###  Step 1: Copy the init.d script to start/stop/restart PDS application
     sudo chmod 755 -R /opt/PDS/src/setup
     cd /opt/PDS/src/setup
     sudo ./create_initid_script.sh
 
-###  Step 2: (Only For SLES 11 SP4, 12) Enable pds service
+###  Step 2: Enable pds service
 
     sudo systemctl reload pds
         
-###  Step 3: (Only For SLES 11 SP4, 12) Start the Flask server as below
+###  Step 3: Start the Flask server as below
 
     sudo service pds start
 
