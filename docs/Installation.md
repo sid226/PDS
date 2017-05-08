@@ -21,10 +21,9 @@ _**NOTE:**_
 
 * For SLES (12 SP1, 12 SP2):
 
-        sudo zypper install -y python python-setuptools gcc git libffi-devel python-devel openssl openssl-devel cronie python-xml pyxml tar wget aaa_base which w3m
+        sudo zypper install -y python python-setuptools gcc git libffi-devel python-devel openssl openssl-devel cronie python-xml pyxml tar wget aaa_base which w3m apache2 apache2-devel apache2-worker apache2-mod_wsgi
         sudo easy_install pip
         sudo pip install 'cryptography==1.4' Flask launchpadlib simplejson logging
-        sudo zypper install -y apache2 apache2-devel apache2-worker apache2-mod_wsgi
 
 * if "/usr/local/bin" is not part of $PATH add it to the path:
 
@@ -82,13 +81,14 @@ Note: In case PDS code is already checked out, do the following for latest updat
         sudo useradd apache
         sudo groupadd apache
 
-    #### Enable authorization module in apache configuration
+    #### Enable authorization module in apache configuration(Only for SLES 12 SP1, 12 SP2)
 
         sudo a2enmod mod_access_compat
 
     #### Set appropriate folder and file permission on /opt/PDS/ folder for apache
 
         sudo chown -R apache:apache /opt/PDS/
+
 
     #### Start/Restart Apache service
 
@@ -128,16 +128,15 @@ Following configuration settings can be managed in `/opt/PDS/src/config/config.p
 
 In case any of the parameters are updated, the server neds to be restarted:
 
-* SLES (11 SP4, 12):
-
-    #### Start the Flask server as below
-
-        sudo service pds start
-
 * SLES (12 SP1, 12 SP2) and Ubuntu (16.04, 16.10, 17.04):
 
     #### Start/Restart Apache service
 
         sudo apachectl restart
 
+* SLES (11 SP4, 12):
+
+    #### Start the Flask server as below
+
+        sudo service pds start
 
