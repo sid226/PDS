@@ -1,7 +1,0 @@
-[{
-    "name" : "Ubuntu",
-    "versions" : [ "16.04", "16.10", "17.04"]
-},{
-    "name" : "SUSE Linux Enterprise Server",
-    "versions" : [ "12 SP2", "12 SP1", "11 SP4"]
-}]

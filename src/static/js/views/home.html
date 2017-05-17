@@ -9,16 +9,16 @@
                 </legend>
                 <div ng-hide="toggle" id="distro_panel" class="sub_menu_items" style="width:80%">
                     <div ng-hide="toggle" class="sub_menu_items">
-                        <input type="checkbox" id="check__all" ng-checked="check__all" ng-click="checkAll(supported_oses_list, 'check_all')" />
+                        <input type="checkbox" id="check__all" ng-checked="check__all" ng-click="checkAll()" />
                         <label>Check-All</label>
                     </div>
-                    <div ng-hide="toggle" ng-repeat="supported_oses in supported_oses_list" class="sub_menu_items">
+                    <div ng-hide="toggle" ng-repeat="supported_os_type in supported_oses_list_keys" class="sub_menu_items">
                         <fieldset>
-                            <input class="flavor_selection" type="checkbox" id="{{ textToVariableNaming(supported_oses.name) }}__all" ng-checked="{{ textToVariableNaming(supported_oses.name) }}__all" ng-click='checkAll(supported_oses);shouldBeCheckAll($event);' />
-                            <label>{{ supported_oses.name }}-All</label>
-                            <div ng-repeat="os in supported_oses.versions">
-                                <input class="flavor_with_version" type="checkbox" id="{{ textToVariableNaming(supported_oses.name) }}__{{ os.toString().replace('.', '_').replace(' ', '_') }}" ng-click="shouldBeCheckAll($event);" ng-checked="{{ textToVariableNaming(supported_oses.name) }}__{{ os.toString().replace('.', '_').replace(' ', '_') }}" />
-                                <label>{{ supported_oses.name }} {{ os }}</label>
+                            <input class="flavor_selection" type="checkbox" id="{{ supported_os_type }}__all" ng-checked="{{ supported_os_type }}__all" ng-click='checkAll(supported_os_type);shouldBeCheckAll($event);' />
+                            <label>{{ readableDistroName(supported_os_type) }}-All</label>
+                            <div ng-repeat="(os, bit_rep) in supported_oses_list[supported_os_type]">
+                                <input class="flavor_with_version" type="checkbox" reference_name="{{ os }}" id="{{ textToVariableNaming(os) }}" ng-click="shouldBeCheckAll($event);" ng-checked="{{ textToVariableNaming(os) }}" />
+                                <label>{{ readableDistroName(os) }}</label>
                             </div>
                         </fieldset>
                     </div>
@@ -66,7 +66,7 @@
                                 <!-- Create Distro columns based on selected unique distros flavors -->
                                 <th>Package Name&nbsp;<a href="javascript:void(0);" ng-click="sort_by('name', $event, exact_match, page_size, page_count)"><i name="package_name" title="Sort Descending" class="sorting-arrows fa fa-fw fa-sort-desc"></i></a></th>
                                 <th>Version</th>
-                                <th ng-repeat="supported_oses in display_column_list">{{ supported_oses.display_name }}&nbsp;
+                                <th ng-repeat="supported_oses in display_column_list">{{ readableDistroName(supported_oses.display_name) }}&nbsp;
                                     <a href="javascript:void(0);" ng-click="sort_by(textToVariableNaming(supported_oses.name.toLowerCase()), $event, exact_match, page_size, page_count)">
                                         <i name="package_{{ textToVariableNaming(supported_oses.name.toLowerCase()) }}"></i>
                                     </a>
@@ -78,7 +78,7 @@
                                 <!-- Create Distro columns based on selected unique distros flavors -->
                                 <th>Package Name&nbsp;<a href="javascript:void(0);" ng-click="sort_by('name', $event, exact_match, page_size, page_count)"><i name="package_name" title="Sort Descending" class="sorting-arrows fa fa-fw fa-sort-desc"></i></a></th>
                                 <th>Version</th>
-                                <th ng-repeat="supported_oses in display_column_list">{{ supported_oses.display_name }}&nbsp;
+                                <th ng-repeat="supported_oses in display_column_list">{{ readableDistroName(supported_oses.display_name) }}&nbsp;
                                     <a href="javascript:void(0);" ng-click="sort_by(textToVariableNaming(supported_oses.name.toLowerCase()), $event, exact_match, page_size, page_count)">
                                         <i name="package_{{ textToVariableNaming(supported_oses.name.toLowerCase()) }}"></i>
                                     </a>

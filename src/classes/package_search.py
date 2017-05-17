@@ -4,32 +4,12 @@ import urllib
 import collections
 from sets import Set
 from config import DATA_FILE_LOCATION, DISABLE_PAGINATION, MAX_RECORDS_TO_CONCAT, LOGGER
+from config import DISTROS_WITH_BIT_REP
 
 class PackageSearch:
     package_data = {}
     supported_distros = {}
     INSTANCE = None
-
-    # Load all distro data
-    distro_bit_mapping = {
-        'UBUNTU_17.04': '0',
-        'UBUNTU_16.10': '0',
-        'UBUNTU_16.04': '0',
-        'SUSE_LINUX_ENTERPRISE_SERVER_12-SP2': '0',
-        'SUSE_LINUX_ENTERPRISE_SERVER_12-SP1': '0',
-        'SUSE_LINUX_ENTERPRISE_SERVER_11-SP4': '0'
-    }
-
-    @classmethod
-    def getDistroBitRepData(cls, bit_array):
-        return_string_order = ('UBUNTU_17.04', 'UBUNTU_16.10', 'UBUNTU_16.04', 'SUSE_LINUX_ENTERPRISE_SERVER_12-SP2', \
-                               'SUSE_LINUX_ENTERPRISE_SERVER_12-SP1', 'SUSE_LINUX_ENTERPRISE_SERVER_11-SP4'
-                               )
-
-        return_string = ''
-        for i in return_string_order:
-            return_string += bit_array[i]
-        return return_string
 
     @classmethod
     def getDataFilePath(cls):
@@ -54,13 +34,7 @@ class PackageSearch:
 
         LOGGER.debug('loadSupportedDistros: In loadSupportedDistros')
 
-        json_data = []
-        try:
-            distro_data_file = '%s/distros_supported.json' % cls.getDataFilePath()
-            json_data = json.load(open(distro_data_file))
-        except Exception,ex:
-            LOGGER.warn('loadSupportedDistros: In loadSupportedDistros %s distro loading resulted in: %s' % (distro_data_file, str(ex)))
-        return json_data
+        return DISTROS_WITH_BIT_REP
 
     @classmethod
     def get_instance(cls):
@@ -92,7 +66,7 @@ class PackageSearch:
             LOGGER.debug('loadPackageData: start writing distros data')
             json_data = cls.preparePackageData()
             cached_file = open(distro_data_file, 'w')
-            cached_file.write(json_data)
+            cached_file.write(json.dumps(json_data))
             cached_file.close()
             LOGGER.debug('loadPackageData: end writing distros data')
 
@@ -100,12 +74,19 @@ class PackageSearch:
 
         return json_data
 
-    def getPackagesFromURL(self, package_name, exact_match, page_number, page_size, sort_key = 'name', reverse = False, distro_bit_search_mapping_vals = '0'):
+    def getPackagesFromURL(self, package_name, exact_match, page_number, page_size, sort_key = 'name', reverse = 0, distro_bit_search_mapping_vals = 0):
         '''
         This API will try to read from JSON files for various distros 
         and return the filtered set of results based on given search 
         keywords and distros to search from.
         '''
+
+        # Allow max page size of 50 and min page size of 10
+        if page_size > 50:
+            page_size = 50
+        elif page_size < 5:
+            page_size = 5
+
         LOGGER.debug('getPackagesFromURL: In function')
         package_name = urllib.unquote(package_name)
 
@@ -171,55 +152,35 @@ class PackageSearch:
                 if len(distro_info) > 1:
                     distro_name = distro_info[0]
                     distro_version = distro_info[1:len(distro_info)]
-                    if distro_name.startswith('SUSE'):
+                    if distro_name.startswith('Suse'):
                         distro_name = '_'.join(distro_info[0:4])
                         distro_version = distro_info[4:len(distro_info)]
                         distro_version = '-'.join(distro_version)
                     else:
                         distro_version = '.'.join(distro_version)
 
-            for pkg in package_info:
-                try:
-                    pkg_key = pkg["packageName"] + '_' + pkg["version"]
-                except Exception as ex:
-                    LOGGER.error('preparePackageData: key not found for package %s' % str(ex))
-                if not package_data.has_key(pkg_key):
-                    pkg[distro_name] = [distro_version]
-                    package_data[pkg_key] = pkg
-                else:
-                    if not package_data[pkg_key].has_key(distro_name):
-                        package_data[pkg_key][distro_name] = [distro_version]
+                bit_key = '%s__%s' % (distro_name, distro_version)
+                bit_key = bit_key.replace('-', '_')
+
+                for pkg in package_info:
+                    try:
+                        pkg_key = pkg["packageName"] + '_' + pkg["version"]
+                    except Exception as ex:
+                        LOGGER.error('preparePackageData: key not found for package %s' % str(ex))
+                    if not package_data.has_key(pkg_key):
+                        pkg[distro_name] = [distro_version]
+                        package_data[pkg_key] = pkg
+                        # This block means first time record creation
+                        package_data[pkg_key]['bit_rep_dec'] = DISTROS_WITH_BIT_REP[distro_name][bit_key]
                     else:
-                        if distro_version not in package_data[pkg_key][distro_name]:
-                            package_data[pkg_key][distro_name].append(distro_version)
+                        if not package_data[pkg_key].has_key(distro_name):
+                            package_data[pkg_key][distro_name] = [distro_version]
+                            package_data[pkg_key]['bit_rep_dec'] += DISTROS_WITH_BIT_REP[distro_name][bit_key]
+                        else:
+                            if distro_version not in package_data[pkg_key][distro_name]:
+                                package_data[pkg_key][distro_name].append(distro_version)
+                                package_data[pkg_key]['bit_rep_dec'] += DISTROS_WITH_BIT_REP[distro_name][bit_key]
 
         json_data = package_data.values()
 
-        return cls.generateBitDataForPackages(json_data)
-
-    @classmethod
-    def generateBitDataForPackages(cls, json_data):
-        for item in json_data:
-            distros = filter(lambda elem: elem != 'packageName' and elem != 'version' and elem != 'url', item.keys())
-
-            for i in range(0, len(distros)):
-                distro_versions = item[distros[i]]
-                for j in range(0, len(distro_versions)):
-                    cls.distro_bit_mapping[distros[i] + '_' + distro_versions[j]] = '1'
-
-            values = cls.getDistroBitRepData(cls.distro_bit_mapping)
-            LOGGER.debug(cls.distro_bit_mapping)
-
-            item['bit_rep_dec'] = int(''.join(values),2)
-            item.pop('url',None)
-
-            cls.distro_bit_mapping = {
-                'UBUNTU_17.04': '0',
-                'UBUNTU_16.10': '0',
-                'UBUNTU_16.04': '0',
-                'SUSE_LINUX_ENTERPRISE_SERVER_12-SP2': '0',
-                'SUSE_LINUX_ENTERPRISE_SERVER_12-SP1': '0',
-                'SUSE_LINUX_ENTERPRISE_SERVER_11-SP4': '0'
-            }
-
-        return json.dumps(json_data)
+        return json_data

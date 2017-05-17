@@ -1,7 +1,8 @@
 from flask import Flask, request, render_template, json
+import logging
 
-from config import local_setup, server_host, server_port
-from config import LOGGER
+from config import server_host, server_port
+from config import LOGGER, DEBUG_LEVEL
 from classes import PackageSearch
 
 
@@ -29,6 +30,7 @@ def getPackagesFromURL():
     package_search = PackageSearch.load()
     package_name = str(request.args.get('package_name', ''))
     search_string = int(request.args.get('search_string', ''))
+    print search_string
     LOGGER.debug(request.args.get('package_name', ''))
     try:
         exact_match = json.loads(request.args.get('exact_match', 0))
@@ -44,7 +46,7 @@ def getPackagesFromURL():
 # Logic to start flask server if executed via command line.
 if __name__ == '__main__':
 
-    if local_setup:
+    if DEBUG_LEVEL == logging.DEBUG:
         app.debug = True
 
     app.run(host=server_host, port=server_port)

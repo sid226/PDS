@@ -106,6 +106,8 @@ _**NOTE:**_
 ###  Step 6: (Optional) Custom configuration
 Following configuration settings can be managed in `/opt/PDS/src/config/config.py`:
 
+        <PDS_BASE> - Base location where PDS is Installed/Cloned. Defaults to `/opt/PDS/`
+
         <DATA_FILE_LOCATION> - Location of folder containing all distribution specific JSON data
         
         <LOG_FILE_LOCATION> - Location of folder containing PDS logs
@@ -120,13 +122,18 @@ Following configuration settings can be managed in `/opt/PDS/src/config/config.p
         
         <proxy_port> - Proxy port number
         
-        <local_setup> - Flag enabling/disabling debugging.
+        <DEBUG_LEVEL> - Set Debug levels for the application to log
         
         <server_host> - IP/fully qualified domain name of server where PDS application will be deployed
         
         <server_port> - PDS port on which application will be accessible to end users
 
-In case any of the parameters are updated, the server neds to be restarted:
+        <DISTROS_WITH_BIT_REP> - Mapping of all the supported distros, new distros added need to be mapped here.
+
+_**NOTE:**_
+* In order to add new distribution support refer [here](Adding_new_distros.md)
+
+In case any of the parameters are updated, the server needs to be restarted:
 
 * SLES (12 SP1, 12 SP2) and Ubuntu (16.04, 16.10, 17.04):
 
