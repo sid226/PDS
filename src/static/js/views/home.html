@@ -102,7 +102,7 @@
                   <li class="ng-scope" id="prev"><a href="javascript:void(0);" ng-click="fetchPackages(null, exact_match, page_size, (current_page - 1 >= 1)?(current_page -1): current_page);">&lt;&lt;</a></li>
                   <li class="ng-scope" ng-repeat="iter in getPages()" id="page_number_{{ iter }}"><a href="javascript:void(0);" ng-click="fetchPackages(null, exact_match, page_size, iter);">{{ iter }}</a></li>                     
                   <li class="ng-scope" id="next"><a href="javascript:void(0);" ng-click="fetchPackages(null, exact_match, page_size, (current_page + 1 <= page_count)?(current_page + 1): current_page);">&gt;&gt;</a></li>
-                  <li class="ng-scope" id="page_number_{{ page_count+1 }}"><a href="javascript:void(0);" ng-click="fetchPackages(null, exact_match, page_size, page_count);">Last</a></li>
+                  <li class="ng-scope" id="page_number_{{ page_count+1 }}"><a href="javascript:void(0);" ng-click="fetchPackages(null, exact_match, page_size, page_count);">Last ({{ page_count }})</a></li>
                 </ul>
                 <div id="main_table_container"></div>
             </div>
