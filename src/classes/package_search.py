@@ -94,16 +94,17 @@ class PackageSearch:
 
         LOGGER.debug('getPackagesFromURL: bit rep generated : %s', distro_bit_search_mapping_vals)
 
-        actual_package_name = package_name.replace('*', '');
+        actual_package_name = package_name.replace('*', '')
+        package_name_ucase = actual_package_name.upper()
 
         if exact_match:
             matches_based_on_package_name = filter(lambda s: s['packageName'] and s['packageName'] == actual_package_name, self.INSTANCE.package_data)
         elif ((str(package_name).startswith('*') and str(package_name).endswith('*')) or '*' not in str(package_name)):
-            matches_based_on_package_name = filter(lambda s: s['packageName'] and actual_package_name in s['packageName'], self.INSTANCE.package_data)
+            matches_based_on_package_name = filter(lambda s: s['S'] and package_name_ucase in s['S'], self.INSTANCE.package_data)
         elif str(package_name).endswith('*'):
-            matches_based_on_package_name = filter(lambda s: s['packageName'] and str(s['packageName']).startswith(actual_package_name), self.INSTANCE.package_data)
+            matches_based_on_package_name = filter(lambda s: s['S'] and str(s['S']).startswith(package_name_ucase), self.INSTANCE.package_data)
         elif str(package_name).startswith('*'):
-            matches_based_on_package_name = filter(lambda s: s['packageName'] and str(s['packageName']).endswith(actual_package_name), self.INSTANCE.package_data)
+            matches_based_on_package_name = filter(lambda s: s['S'] and str(s['S']).endswith(package_name_ucase), self.INSTANCE.package_data)
 
         LOGGER.debug('getPackagesFromURL: Search on package name : %s', len(matches_based_on_package_name))
 
@@ -180,6 +181,9 @@ class PackageSearch:
                             if distro_version not in package_data[pkg_key][distro_name]:
                                 package_data[pkg_key][distro_name].append(distro_version)
                                 package_data[pkg_key]['bit_rep_dec'] += DISTROS_WITH_BIT_REP[distro_name][bit_key]
+
+                    tempStr = str(package_data[pkg_key]['packageName'])
+                    package_data[pkg_key]['S'] = tempStr.lower().upper()
 
         json_data = package_data.values()
 
