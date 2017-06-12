@@ -14,11 +14,11 @@
                     </div>
                     <div ng-hide="toggle" ng-repeat="supported_os_type in supported_oses_list_keys" class="sub_menu_items">
                         <fieldset>
-                            <input class="flavor_selection" type="checkbox" id="{{ supported_os_type }}__all" ng-checked="{{ supported_os_type }}__all" ng-click='checkAll(supported_os_type);shouldBeCheckAll($event);' />
+                            <input class="flavor_selection" type="checkbox" id="{{ textToVariableNaming(supported_os_type) }}__all" ng-checked="{{ supported_os_type }}__all" reference_name="{{ supported_os_type }}" ng-click='checkAll(supported_os_type);shouldBeCheckAll($event);' />
                             <label>{{ readableDistroName(supported_os_type) }}-All</label>
-                            <div ng-repeat="(os, bit_rep) in supported_oses_list[supported_os_type]">
-                                <input class="flavor_with_version" type="checkbox" reference_name="{{ os }}" id="{{ textToVariableNaming(os) }}" ng-click="shouldBeCheckAll($event);" ng-checked="{{ textToVariableNaming(os) }}" />
-                                <label>{{ readableDistroName(os) }}</label>
+                            <div ng-repeat="(osversion, bit_rep) in supported_oses_list[supported_os_type]">
+                                <input class="flavor_with_version" type="checkbox" reference_name="{{ supported_os_type }}-_-{{ osversion }}-_-{{ bit_rep }}" id="{{ textToVariableNaming(supported_os_type) }}___{{ textToVariableNaming(osversion) }}" ng-click="shouldBeCheckAll($event);" ng-checked="{{ textToVariableNaming(osversion) }}" />
+                                <label>{{ readableDistroName(osversion) }}</label>
                             </div>
                         </fieldset>
                     </div>
@@ -88,8 +88,8 @@
                         <tbody id="package_table" style="overflow-y: auto;">
                             <!--tr ng-repeat="package in packages_all | orderBy: sortKey:reverse | filter: searchKeyword | limitTo: page_size : (currentPage-1)*page_size "-->                              
                             <tr ng-repeat="package in packages_all | limitTo: number_of_items : (currentPage-1)*page_size ">                                
-                                <td ng-hide="">{{ package.packageName }}</td>
-                                <td ng-hide="">{{ package.version }}</td>
+                                <td ng-hide="">{{ package.P }}</td>
+                                <td ng-hide="">{{ package.V }}</td>
                                 <td ng-hide="" ng-repeat="supported_oses in display_column_list">
                                     {{ getDistroVersion(package, supported_oses.name) }}
                                 </td>

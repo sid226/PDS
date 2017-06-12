@@ -10,24 +10,17 @@ _**General Notes:**_
 
 ### Step 1. Create a JSON file with package data
 
-All the distribution specific data files need to be added in the folder `<DATA_FILE_LOCATION>`. 
+**The data file should be saved in folder `<DATA_FILE_LOCATION>`:**
 
-**The data file should be named in following convention in folder `<DATA_FILE_LOCATION>`:**
-
-    <Distribution>_<Version>_Package_List.json
-
-`<Distribution>` - Name of the distribution to be added for e.g. "Ubuntu"
-
-_**Note:**_ 
-In case distribution name contains spaces it should be replaced by '_'.
-
-`<Version>` - Version of the distribution to be supported for e.g. 14.04
+    The file name can be preferably named as <DistroName>_<DistroVersion>.json
 
 **Here's sample file naming:**
 
-    Ubuntu_14.04_Package_List.json
+    Ubuntu_14.04.json
 
-The Content of the distribution data JSON file needs to be in format below:
+NOTE: File should not be named as `cached_data.json`
+
+The Content of the distribution data JSON file has to be in the following format:
 
 ```
 [{
@@ -65,33 +58,69 @@ The Content of the distribution data JSON file needs to be in format below:
 }]
 ```
 
-### Step 2. Make an entry in the configuration file `/<PDS_BASE>/src/config/config.py` as below
-The entry in the configuration file is to help generate a cache file `<DATA_FILE_LOCATION>/cached_data.json` which will be then loaded by the server while starting and used for processing requests.
+### Step 2. Update the SUPPORTED_DISTROS variable in configuration file `/<PDS_BASE>/src/config/config.py`
+PDS application requires a mapping between each JSON file and relevant Distro Version.  This is done using SUPPORTED_DISTROS object in config file.
+SUPPORTED_DISTROS is a dictionary object having the "Distro Name" as the keys.  And each distro name has another dictionary having "Distro Version" has its key and "JSON file as its value"
 
-```diff
-@@ -39,6 +39,8 @@ DistributionS_WITH_BIT_REP = {
-         'Suse_Linux_Enterprise_Server__11_SP4': 0,
-         'Suse_Linux_Enterprise_Server__12_SP1': 0,
-         'Suse_Linux_Enterprise_Server__12_SP2': 0
-+    }, '<Distribution>': {
-+        '<Distribution>__<Version>': 0
-     }
- }
+PDS uses the "Distro Name" and "Distro Version" keys to create "Display Names" of check-boxes on the PDS main page.  Ensure that there are no duplicate 
+"Distro Name" or "Distro Version" entries.
+
+SUPPORTED_DISTROS must have following structure
 ```
-`<Distribution>` - Name of the distribution to be added for e.g. "Ubuntu"
+SUPPORTED_DISTROS = {
+    '<Distro Name1>': {
+        '<Distro Version 1': '<DistroName1>_<DistroVersion1>.json',
+        '<Distro Version 2': '<DistroName1>_<DistroVersion2>.json',
+        '<Distro Version 3': '<DistroName1>_<DistroVersion3>.json'
+    },
+    '<Distro Name2>': {
+        '<Distro Version XX': '<DistroName2>_<DistroVersionXX>.json',
+        '<Distro Version YY': '<DistroName2>_<DistroVersionYY>.json',
+        '<Distro Version ZZ': '<DistroName2>_<DistroVersionZZ>.json'
+    }
+}
+```
 
-_**Note:**_ 
-In case distribution name contains spaces it should be replaced by '_'.
-
-`<Version>` - Version of the distribution to be supported for e.g. 14.04
+**Here's an example:**
+```
+SUPPORTED_DISTROS = {
+    'Ubuntu': {
+        'Ubuntu 17.04': 'Ubuntu_17_04.json',
+        'Ubuntu 16.10': 'Ubuntu_16_10.json',
+        'Ubuntu 16.04': 'Ubuntu_16_04.json'
+    }, 
+    'Suse Linux Enterprise Server': {
+        'Suse Linux Enterprise Server 11 SP4': 'Suse_Linux_Enterprise_Server_11_SP4.json',
+        'Suse Linux Enterprise Server 12 SP1': 'Suse_Linux_Enterprise_Server_12_SP1.json',
+        'Suse Linux Enterprise Server 12 SP2': 'Suse_Linux_Enterprise_Server_12_SP2.json'
+    }
+}
+```
 
 ### Step 3. Delete the cached data file `<DATA_FILE_LOCATION>/cached_data.json`
-The system needs to regenerate the cached_data after adding a new distro.  Hence delete the existing cache as follows:
+In order to search efficiently, the PDS caches the data from all JSON files into a single file called as 'cached_data.json'
+
+Cache file maintains the array of following JSON structure...
+
+`{P:<Package Name>, S:<Uppercase variant of P>, V:<Package Version>, B: <Search Flag indicating availability of P in various distro versions>}`
+
+NOTE About `B` search flag field in cache:  PDS assigns a binary flag to each distro version when the SUPPORTED_DISTROS is loaded for the first time.  For e.g. referring to the SUPPORTED_DISTROS example given above,
+PDS may assign following flags to the distros...
+```
+'Ubuntu_17_04.json' = 1
+'Ubuntu_16_10.json' = 2
+'Ubuntu_16_04.json' = 4
+'Suse_Linux_Enterprise_Server_11_SP4.json' = 8
+'Suse_Linux_Enterprise_Server_12_SP1.json' = 16
+'Suse_Linux_Enterprise_Server_12_SP2.json' = 32
+```
+In case the `PackageNameX` is available in in `Ubuntu 16.04` and `Ubuntu 16.10` then the `B` will be set to `6`
+
+Cache file has to be regenerated whenever there is a change in SUPPORTED_DISTROS object.  Hence delete the existing cache as follows:
 
 ```
 cd <DATA_FILE_LOCATION>
 rm -f cached_data.json
 ```
 
-Restart the server by refering to the steps mentioned in [Installation](Installation.md) document.
-
+### Step 4. Restart the server by referring to the steps mentioned in [Installation](Installation.md) document.

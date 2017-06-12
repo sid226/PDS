@@ -32,8 +32,8 @@ var HomeController = function($scope) {
                 console.log(e);
                 $scope.supported_oses_list = data;
             }
-
             $scope.supported_oses_list_keys = Object.keys($scope.supported_oses_list);
+            
             $scope.$apply();
 
             },
@@ -65,8 +65,10 @@ var HomeController = function($scope) {
         $scope.number_of_items = $scope.page_size;
     };
 
+    //shouldBeCheckAll is called on click event of Distro_All and Distro related checkboxes
     $scope.shouldBeCheckAll = function(event){
         if (!document.getElementById(event.target.id).checked){
+            //Current checkbox is unticked hence untick the "check_all" checkbox
             $('#check__all').prop('checked', false);
             //Distro specific check-all
             try{
@@ -80,7 +82,6 @@ var HomeController = function($scope) {
 
     $scope.sort_by = function(sort_key, my_event, exact_match, page_size, page_count){
         // Modify the sort key based on selection.
-
         $scope.sort_key = sort_key;
         $scope.sort_reverse = ! $scope.sort_reverse;
         $scope.exact_match = exact_match;
@@ -124,19 +125,20 @@ var HomeController = function($scope) {
     
     $scope.checkAll = function(distro_type, my_name){
         if (distro_type === undefined){
+            //this means "check_all" checkbox is clicked
             var should_check = $('#check__all').prop("checked");
             // this section addresses parent check all
             for(distro_type in $scope.supported_oses_list){
-                $('#'+ distro_type +'__all').prop("checked", should_check);
+                $('#'+ $scope.textToVariableNaming(distro_type) +'__all').prop("checked", should_check);
                 for(distro_version in $scope.supported_oses_list[distro_type]){
-                    $('#'+$scope.textToVariableNaming(distro_version)).prop("checked", should_check);
+                    $('#'+ $scope.textToVariableNaming(distro_type) + '___' + $scope.textToVariableNaming(distro_version)).prop("checked", should_check);
                 }
             }
         }else{
             // It means distro specific check-all
-            var should_check_specific = $('#'+ distro_type +'__all').prop("checked");
+            var should_check_specific = $('#'+ $scope.textToVariableNaming(distro_type) +'__all').prop("checked");
             for(distro_version in $scope.supported_oses_list[distro_type]){
-                $('#'+$scope.textToVariableNaming(distro_version)).prop("checked", should_check_specific);
+                $('#' + $scope.textToVariableNaming(distro_type) + '___' + $scope.textToVariableNaming(distro_version)).prop("checked", should_check_specific);
             }
         }       
     };
@@ -317,28 +319,23 @@ var HomeController = function($scope) {
                 $scope.show_loader = true;
                 var self = {};
                 self.package_name = encodeURIComponent($scope.package_name);
-                distro_string_id = $(this).attr('id');
-                distro_reference_string_name = $(this).attr('reference_name');
-                distro_string = distro_string_id.split('__');
-                distro_reference_string = distro_reference_string_name.split('__');
+                distro_string_id = $(this).attr('id'); //Id is 'encoded_os_name' and 'encoded_version' seperated 3 underscores
+                distro_reference_string_name = $(this).attr('reference_name'); //reference name is 'os name' and 'version' seperated by -_-
+                distro_string_array = distro_string_id.split('___');  //[0] has 'encoded_os_name' and [1] has 'encoded_version'
+                distro_reference_string_array = distro_reference_string_name.split('-_-'); //distro_reference_string_array[0] contains 'os name' and [1] contains 'version' and [2] contains bit_rep
 
                 self.display_name = '';
-                if(distro_reference_string.length > 0 && distro_string.length > 0){
-                    self.name = distro_reference_string[0];
-                    self.display_name = distro_reference_string[0].replace(/_/g, ' ');
-                    self.version = distro_reference_string[1];
-                    search_bit_rep += $scope.supported_oses_list[self.name][distro_reference_string_name];
+                if(distro_reference_string_array.length == 3 && distro_string_array.length == 2){
+                    self.name = distro_reference_string_array[0]; //os name
+                    self.display_name = distro_reference_string_array[0]; //os name
+                    self.version = distro_reference_string_array[1]; //os version
+                    search_bit_rep += $scope.supported_oses_list[self.name][distro_reference_string_array[1]];
                     $scope.selected_distros.push(self);
                     $scope.display_column_list[self.name] = self;
                     if($scope.distroIdToVersionMap[self.name] === undefined){
                         $scope.distroIdToVersionMap[self.name] = {};
                     }
-                    if(distro_string.indexOf(self.name) == 0){
-                        // i.e. the name starts with given name
-                        if(distro_string.length > 0 && distro_reference_string.length > 0){
-                            $scope.distroIdToVersionMap[self.name][distro_string[1]] = distro_reference_string[1].replace(/_/g, '-');                        
-                        }
-                    }
+                    $scope.distroIdToVersionMap[self.name][distro_reference_string_array[1]] = distro_reference_string_array[2];
                 }
             }
         });
@@ -355,7 +352,7 @@ var HomeController = function($scope) {
     };
 
     $scope.textToVariableNaming = function(distro_name){
-        return distro_name.replace(/\./g, '_');
+        return distro_name.replace(/\./g, '_').replace(/ /g, '_');
     };
 
     $scope.getPages = function(){
@@ -379,18 +376,15 @@ var HomeController = function($scope) {
     };
 
     $scope.getDistroVersion = function(distro, supported_os_name){
-        bit_rep_dec = distro.bit_rep_dec;
-        selected_distros = $scope.distroIdToVersionMap[supported_os_name];
-
-        distro_version_ids = Object.keys(selected_distros).filter(function(n) {
-            return distro[supported_os_name] && distro[supported_os_name].indexOf(selected_distros[n]) !== -1;
-        });
-
-        distro_versions = distro_version_ids.map(function(n){
-            return selected_distros[n];
-        });
-
-        return distro_versions.join('/');
+        bit_rep_dec = distro.B;
+        requested_distros = $scope.distroIdToVersionMap[supported_os_name];
+        distro_versions = []
+        for(var requested_version in requested_distros){
+            if((bit_rep_dec & requested_distros[requested_version]) > 0){
+                distro_versions.push(requested_version);
+            }
+        }
+        return distro_versions.join(' / ');
     };
 
     $scope.getSelectedPage = function(){

@@ -30,30 +30,23 @@ Refer https://docs.python.org/2/library/logging.html for more information.
 '''
 DEBUG_LEVEL = logging.ERROR
 
-DISTROS_WITH_BIT_REP = {
+SUPPORTED_DISTROS = {
     'Ubuntu': {
-        'Ubuntu__17.04': 0,
-        'Ubuntu__16.10': 0,
-        'Ubuntu__16.04': 0,
-    }, 'Suse_Linux_Enterprise_Server': {
-        'Suse_Linux_Enterprise_Server__11_SP4': 0,
-        'Suse_Linux_Enterprise_Server__12_SP1': 0,
-        'Suse_Linux_Enterprise_Server__12_SP2': 0
+        'Ubuntu 16.04': 'Ubuntu_16_04_Package_List.json',
+        'Ubuntu 16.10': 'Ubuntu_16_10_Package_List.json',
+        'Ubuntu 17.04': 'Ubuntu_17_04_Package_List.json'
+    }, 
+    'Suse Linux Enterprise Server': {
+        'Suse Linux Enterprise Server 11 SP4': 'Suse_Linux_Enterprise_Server_11_SP4_Package_List.json',
+        'Suse Linux Enterprise Server 12 SP1': 'Suse_Linux_Enterprise_Server_12_SP1_Package_List.json',
+        'Suse Linux Enterprise Server 12 SP2': 'Suse_Linux_Enterprise_Server_12_SP2_Package_List.json'
     }
 }
 
 logging.basicConfig(format='%(asctime)s %(message)s', filename=LOG_FILE_LOCATION, level=DEBUG_LEVEL)
 
 LOGGER = logging.getLogger('PDS_SERVER')
-
-def generateDistroBitReps():
-    bit_value = '1'
-    for distro_type in DISTROS_WITH_BIT_REP:
-        for distro in DISTROS_WITH_BIT_REP[distro_type]:
-            DISTROS_WITH_BIT_REP[distro_type][distro] = int(bit_value, 2)
-            bit_value += '0'
-
-generateDistroBitReps()
+   
 # In case application is hosted on server with proxy, set "enable_proxy_authentication = True" in config.py 
 # and update the proxy details
 def proxy_authentication():
