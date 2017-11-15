@@ -2,9 +2,6 @@
 All notable changes to this project will be documented in this file.
 
 ## v1.4.2
-### Features
-- 
-
 ### Enhancements
 - Updated FAQ with new SLES distro.
 - Updated data files
