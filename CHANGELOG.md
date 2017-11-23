@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.4.3
+### Enhancements
+- Updated Ubuntu data files.
+
 ## v1.4.2
 ### Enhancements
 - Updated FAQ with new SLES distro.
