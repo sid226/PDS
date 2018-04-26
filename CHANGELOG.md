@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.4.4
+### Enhancements
+- Added Ub 18.04
+- Updated supported Data files
+
 ## v1.4.3
 ### Enhancements
 - Updated Ubuntu data files.
