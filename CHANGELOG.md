@@ -1,5 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## v1.4.5
+## Enchancements
+- Added SLES 15
+- Updated existing data files
 
 ## v1.4.4
 ### Enhancements
