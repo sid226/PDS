@@ -15,7 +15,7 @@
         What is PDS?
       </div>
       <div class="list-group-item" ng-show="questionState(1)">
-        <p>PDS, or Package Distribution Search tool, helps you to search for available packages across OS distributions in a single user interface. Current version of PDS is v1.4.6</p>
+        <p>PDS, or Package Distribution Search tool, helps you to search for available packages across OS distributions in a single user interface. Current version of PDS is v1.5</p>
       </div>
       <div class="list-group-item list-group-item-info ng-class:{'active': questionState(2), 'glyphicon-minus':questionState(2), 'glyphicon-plus':!questionState(2)};"  ng-click="clickQuestion(2)"> <!--ng-class="[list-group-item, { 'active':questionState(2) } ]"-->
         Which operating systems does PDS support?
@@ -35,6 +35,7 @@
         <ul>
           <li><a href="https://www.suse.com/LinuxPackages/packageRouter.jsp?product=server&version=11&architecture=s390x&package_name=index_all" target="blank">SUSE Linux Enterprise Server 11</a></li>
           <li><a href="https://www.suse.com/LinuxPackages/packageRouter.jsp?product=server&version=12&architecture=s390x&package_name=index_all" target="blank">SUSE Linux Enterprise Server 12</a></li>
+<li><a href="https://www.suse.com/releasenotes/x86_64/SUSE-SLES/15/#InfraPackArch.SystemZ" target="blank">SUSE Linux Enterprise Server 15</a></li>
           <li><a href="https://packagehub.suse.com/#packages" target="blank">SUSE Package Hub</a></li>
           <li><a href="https://launchpad.net/ubuntu/xenial/s390x/" target="blank">Ubuntu 16.04</a></li>
           <li><a href="https://launchpad.net/ubuntu/zesty/s390x/" target="blank">Ubuntu 17.04</a></li>
@@ -46,7 +47,7 @@
         Does PDS list the packages for all architectures?
       </div>
       <div class="list-group-item" ng-show="questionState(4)">
-        <p>No. The packages that PDS lists are for only the s390x architecture.</p>
+        <p>No. The packages that PDS lists are for s390x and Intel architecture.</p>
       </div>
       <div class="list-group-item list-group-item-info ng-class:{'active': questionState(5), 'glyphicon-minus':questionState(5), 'glyphicon-plus':!questionState(5)};"  ng-click="clickQuestion(5)">
         Which web browsers does PDS work on?

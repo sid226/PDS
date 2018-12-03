@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5
+## Enchancements
+- Updated tool with added support to searches on intel
+- Added necessary data files
+- UI changes to provide search options for intel based distributions
+
 ## v1.4.6
 ## Enchancements
 - Updated existing data files
