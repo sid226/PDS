@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+
+## v1.5.1
+## Enchancements
+- Added necessary data files
+- Commented intel section of code
+
 ## v1.5
 ## Enchancements
 - Updated tool with added support to searches on intel
