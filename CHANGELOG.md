@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.2
+## Enchancements
+- Added necessary data files
 
 ## v1.5.1
 ## Enchancements
