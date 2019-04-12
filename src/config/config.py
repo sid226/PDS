@@ -36,15 +36,10 @@ DEBUG_LEVEL = logging.ERROR
 SUPPORTED_DISTROS = {
     'zUbuntu': {
         'zUbuntu 16.04': 'Ubuntu_16_04_Package_List.json',
-	'zUbuntu 17.04': 'Ubuntu_17_04_Package_List.json',
-        'zUbuntu 17.10': 'Ubuntu_17_10_Package_List.json',
         'zUbuntu 18.04': 'Ubuntu_18_04_Package_List.json'
     }, 
     'zSUSE Linux Enterprise Server': {
-    #    '11 SP4': 'Suse_Linux_Enterprise_Server_11_SP4_Package_List.json',
-        'zSLES 12 SP1': 'Suse_Linux_Enterprise_Server_12_SP1_Package_List.json',
-        'zSLES 12 SP2': 'Suse_Linux_Enterprise_Server_12_SP2_Package_List.json',
-	'zSLES 12 SP3': 'Suse_Linux_Enterprise_Server_12_SP3_Package_List.json',
+	'zSLES 12 SP4': 'Suse_Linux_Enterprise_Server_12_SP4_Package_List.json',
 	'zSLES 15'    : 'Suse_Linux_Enterprise_Server_15_Package_List.json'
     },
     'zSUSE Package Hub': {
@@ -52,19 +47,6 @@ SUPPORTED_DISTROS = {
         'zSLES 12 SP2': 'SUSE_Package_Hub_SLES_12_SP2.json',
 	'zSLES 12 SP3': 'SUSE_Package_Hub_SLES_12_SP3.json'
     }
-   #  'xUbuntu' : {
-#	'xUbuntu 16.04': 'xUbuntu_16_04_Package_List.json',
-#	'xUbuntu 18.04': 'xUbuntu_18_04_Package_List.json'
- #    },
-  #   'xSUSE Linux Enterprise Server': {
-   #  	'xSLES 12 SP3': 'xSuse_Linux_Enterprise_Server_12_SP3_Package_List.json',
-#	'xSLES 15'    : 'xSuse_Linux_Enterprise_Server_15_Package_List.json'
- #    },
-  #   'xSUSE Package Hub': {
-#	'xSLES 12 SP1': 'xSUSE_Package_Hub_SLES_12_SP1.json',
-#	'xSLES 12 SP2': 'xSUSE_Package_Hub_SLES_12_SP3.json',
-#	'xSLES 12 SP3': 'xSUSE_Package_Hub_SLES_12_SP3.json'
- #    }
 }
 
 logging.basicConfig(format='%(asctime)s %(message)s', filename=LOG_FILE_LOCATION, level=DEBUG_LEVEL)
