@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.3
+## Enchancements
+- Added necessary data files
+- Updated versions of Sles 12 and Alpine
+
 ## v1.5.2
 ## Enchancements
 - Added necessary data files
