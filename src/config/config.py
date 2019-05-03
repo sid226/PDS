@@ -36,7 +36,8 @@ DEBUG_LEVEL = logging.ERROR
 SUPPORTED_DISTROS = {
     'zUbuntu': {
         'zUbuntu 16.04': 'Ubuntu_16_04_Package_List.json',
-        'zUbuntu 18.04': 'Ubuntu_18_04_Package_List.json'
+        'zUbuntu 18.04': 'Ubuntu_18_04_Package_List.json',
+        'zUbuntu 19.04': 'Ubuntu_19_04_Package_List.json'
     }, 
     'zSUSE Linux Enterprise Server': {
 	'zSLES 12 SP4': 'Suse_Linux_Enterprise_Server_12_SP4_Package_List.json',
