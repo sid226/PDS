@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.5
+## Enchancements
+- Updated supported Data files
+
 ## v1.5.4
 ## Enchancements
 - Added Ub 19.04
