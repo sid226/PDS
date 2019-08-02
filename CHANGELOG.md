@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.7
+## Enchancements
+- Updated supported Data files
+- Added SLES 15 SP1 support
+
 ## v1.5.6
 ## Enchancements
 - Updated supported Data files

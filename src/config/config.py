@@ -41,7 +41,8 @@ SUPPORTED_DISTROS = {
     }, 
     'zSUSE Linux Enterprise Server': {
 	'zSLES 12 SP4': 'Suse_Linux_Enterprise_Server_12_SP4_Package_List.json',
-	'zSLES 15'    : 'Suse_Linux_Enterprise_Server_15_Package_List.json'
+	'zSLES 15'    : 'Suse_Linux_Enterprise_Server_15_Package_List.json',
+    'zSLES 15 SP1': 'Suse_Linux_Enterprise_Server_15_SP1_Package_List.json'
     },
     'zSUSE Package Hub': {
         'zSLES 12 SP1': 'SUSE_Package_Hub_SLES_12_SP1.json',
