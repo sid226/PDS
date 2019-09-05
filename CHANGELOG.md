@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.8
+## Enchancements
+- Updated supported Data files
+
 ## v1.5.7
 ## Enchancements
 - Updated supported Data files

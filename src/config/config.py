@@ -47,7 +47,9 @@ SUPPORTED_DISTROS = {
     'zSUSE Package Hub': {
         'zSLES 12 SP1': 'SUSE_Package_Hub_SLES_12_SP1.json',
         'zSLES 12 SP2': 'SUSE_Package_Hub_SLES_12_SP2.json',
-	'zSLES 12 SP3': 'SUSE_Package_Hub_SLES_12_SP3.json'
+        'zSLES 12 SP3': 'SUSE_Package_Hub_SLES_12_SP3.json',
+        'zSLES 15': 'SUSE_Package_Hub_SLES_15.json',
+        'zSLES 15 SP1': 'SUSE_Package_Hub_SLES_15_SP1.json'
     }
 }
 
