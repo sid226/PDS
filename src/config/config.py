@@ -34,22 +34,22 @@ Refer https://docs.python.org/2/library/logging.html for more information.
 DEBUG_LEVEL = logging.ERROR
 
 SUPPORTED_DISTROS = {
-    'zUbuntu': {
-        'zUbuntu 16.04': 'Ubuntu_16_04_Package_List.json',
-        'zUbuntu 18.04': 'Ubuntu_18_04_Package_List.json',
-        'zUbuntu 19.04': 'Ubuntu_19_04_Package_List.json'
+    'Ubuntu': {
+        'Ubuntu 16.04': 'Ubuntu_16_04_Package_List.json',
+        'Ubuntu 18.04': 'Ubuntu_18_04_Package_List.json',
+        'Ubuntu 19.04': 'Ubuntu_19_04_Package_List.json'
     }, 
-    'zSUSE Linux Enterprise Server': {
-	'zSLES 12 SP4': 'Suse_Linux_Enterprise_Server_12_SP4_Package_List.json',
-	'zSLES 15'    : 'Suse_Linux_Enterprise_Server_15_Package_List.json',
-    'zSLES 15 SP1': 'Suse_Linux_Enterprise_Server_15_SP1_Package_List.json'
+    'SUSE Linux Enterprise Server': {
+	'SLES 12 SP4': 'Suse_Linux_Enterprise_Server_12_SP4_Package_List.json',
+	'SLES 15'    : 'Suse_Linux_Enterprise_Server_15_Package_List.json',
+    'SLES 15 SP1': 'Suse_Linux_Enterprise_Server_15_SP1_Package_List.json'
     },
-    'zSUSE Package Hub': {
-        'zSLES 12 SP1': 'SUSE_Package_Hub_SLES_12_SP1.json',
-        'zSLES 12 SP2': 'SUSE_Package_Hub_SLES_12_SP2.json',
-        'zSLES 12 SP3': 'SUSE_Package_Hub_SLES_12_SP3.json',
-        'zSLES 15': 'SUSE_Package_Hub_SLES_15.json',
-        'zSLES 15 SP1': 'SUSE_Package_Hub_SLES_15_SP1.json'
+    'SUSE Package Hub': {
+        'SLES 12 SP1': 'SUSE_Package_Hub_SLES_12_SP1.json',
+        'SLES 12 SP2': 'SUSE_Package_Hub_SLES_12_SP2.json',
+        'SLES 12 SP3': 'SUSE_Package_Hub_SLES_12_SP3.json',
+        'SLES 15': 'SUSE_Package_Hub_SLES_15.json',
+        'SLES 15 SP1': 'SUSE_Package_Hub_SLES_15_SP1.json'
     }
 }
 
