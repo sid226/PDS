@@ -50,6 +50,23 @@ SUPPORTED_DISTROS = {
         'zSLES 12 SP3': 'SUSE_Package_Hub_SLES_12_SP3.json',
         'zSLES 15': 'SUSE_Package_Hub_SLES_15.json',
         'zSLES 15 SP1': 'SUSE_Package_Hub_SLES_15_SP1.json'
+    },
+     'xUbuntu': {
+        'xUbuntu 16.04': 'xUbuntu_16_04_Package_List.json',
+        'xUbuntu 18.04': 'xUbuntu_18_04_Package_List.json',
+        'xUbuntu 19.04': 'xUbuntu_19_04_Package_List.json'
+    }, 
+    'xSUSE Linux Enterprise Server': {
+	'xSLES 12 SP4': 'xSuse_Linux_Enterprise_Server_12_SP4_Package_List.json',
+	'xSLES 15'    : 'xSuse_Linux_Enterprise_Server_15_Package_List.json',
+    'xSLES 15 SP1': 'xSuse_Linux_Enterprise_Server_15_SP1_Package_List.json'
+    },
+    'xSUSE Package Hub': {
+        'xSLES 12 SP1': 'xSUSE_Package_Hub_SLES_12_SP1.json',
+        'xSLES 12 SP2': 'xSUSE_Package_Hub_SLES_12_SP2.json',
+        'xSLES 12 SP3': 'xSUSE_Package_Hub_SLES_12_SP3.json',
+        'xSLES 15': 'xSUSE_Package_Hub_SLES_15.json',
+        'xSLES 15 SP1': 'xSUSE_Package_Hub_SLES_15_SP1.json'
     }
 }
 
