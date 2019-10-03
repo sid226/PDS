@@ -367,6 +367,7 @@
 {"packageName": "parley", "version": "17.04.2-2.1"},
 {"packageName": "phonon4qt5", "version": "4.9.0-2.1"},
 {"packageName": "phonon4qt5-backend-gstreamer", "version": "4.9.0-2.1"},
+{"packageName": "php7-APCu", "version": "5.1.15-2.1"},
 {"packageName": "php72-redis", "version": "4.3.0-2.1"},
 {"packageName": "picmi", "version": "17.04.2-2.1"},
 {"packageName": "pimcommon", "version": "16.08.2-2.1"},
