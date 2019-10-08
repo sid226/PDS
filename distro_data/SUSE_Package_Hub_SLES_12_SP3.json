@@ -17,6 +17,7 @@
 {"packageName": "kimageformats", "version": "5.32.0-6.1"},
 {"packageName": "openjpeg", "version": "1.5.2-5.1"},
 {"packageName": "oxygen5-icon-theme", "version": "5.32.0-2.1"},
+{"packageName": "php7-APCu", "version": "5.1.15-2.1"},
 {"packageName": "php72-redis", "version": "4.3.0-2.1"},
 {"packageName": "plasma5-session", "version": "5.8.7-2.1"},
 {"packageName": "plasma5-workspace-wallpapers", "version": "5.8.7-2.1"},
