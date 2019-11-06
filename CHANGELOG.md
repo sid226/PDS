@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 ## v1.5.9
 ## Enchancements
 - Updated supported Data files
+- Added ubuntu 19.04
+- Added rhel 
 
 ## v1.5.8
 ## Enchancements
