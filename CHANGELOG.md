@@ -1,11 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## v1.5.9
+## v1.5.10
 ## Enchancements
 - Updated supported Data files
-- Added ubuntu 19.04
+- Added ubuntu 19.10
 - Added rhel 
+
+## v1.5.9
+## Enchancements
+- Updated supported Data files 
 
 ## v1.5.8
 ## Enchancements
