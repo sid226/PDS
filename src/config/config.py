@@ -60,6 +60,33 @@ SUPPORTED_DISTROS = {
         'zRHEL 7.6': 'RHEL_7_6_Package_List.json',
         'zRHEL 7.7': 'RHEL_7_7_Package_List.json',
         'zRHEL 8.0': 'RHEL_8_Package_List.json'
+        },
+      'zUbuntu': {
+        'zUbuntu 16.04': 'Ubuntu_16_04_Package_List.json',
+        'zUbuntu 18.04': 'Ubuntu_18_04_Package_List.json',
+        'zUbuntu 19.04': 'Ubuntu_19_04_Package_List.json',
+        'zUbuntu 19.10': 'Ubuntu_19_10_Package_List.json'
+    }, 
+    'xSUSE Linux Enterprise Server': {
+	'xSLES 12 SP4': 'xSuse_Linux_Enterprise_Server_12_SP4_Package_List.json',
+	'xSLES 15'    : 'xSuse_Linux_Enterprise_Server_15_Package_List.json',
+    'xSLES 15 SP1': 'xSuse_Linux_Enterprise_Server_15_SP1_Package_List.json'
+    },
+    'xSUSE Package Hub': {
+        'xSLES 12 SP1': 'xSUSE_Package_Hub_SLES_12_SP1.json',
+        'xSLES 12 SP2': 'xSUSE_Package_Hub_SLES_12_SP2.json',
+        'xSLES 12 SP3': 'xSUSE_Package_Hub_SLES_12_SP3.json',
+        'xSLES 15': 'xSUSE_Package_Hub_SLES_15.json',
+        'xSLES 15 SP1': 'xSUSE_Package_Hub_SLES_15_SP1.json'
+    },
+    
+    'xRHEL': {
+        'xRHEL 6.10': 'xRHEL_6_10_Package_List.json',
+        'xRHEL 7.4': 'xRHEL_7_4_Package_List.json',
+        'xRHEL 7.5': 'xRHEL_7_5_Package_List.json',
+        'xRHEL 7.6': 'xRHEL_7_6_Package_List.json',
+        'xRHEL 7.7': 'xRHEL_7_7_Package_List.json',
+        'xRHEL 8.0': 'xRHEL_8_Package_List.json'
         }
 
 
