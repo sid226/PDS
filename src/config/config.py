@@ -61,11 +61,11 @@ SUPPORTED_DISTROS = {
         'zRHEL 7.7': 'RHEL_7_7_Package_List.json',
         'zRHEL 8.0': 'RHEL_8_Package_List.json'
         },
-      'zUbuntu': {
-        'zUbuntu 16.04': 'Ubuntu_16_04_Package_List.json',
-        'zUbuntu 18.04': 'Ubuntu_18_04_Package_List.json',
-        'zUbuntu 19.04': 'Ubuntu_19_04_Package_List.json',
-        'zUbuntu 19.10': 'Ubuntu_19_10_Package_List.json'
+      'xUbuntu': {
+        'xUbuntu 16.04': 'xUbuntu_16_04_Package_List.json',
+        'xUbuntu 18.04': 'xUbuntu_18_04_Package_List.json',
+        'xUbuntu 19.04': 'xUbuntu_19_04_Package_List.json',
+        'xUbuntu 19.10': 'xUbuntu_19_10_Package_List.json'
     }, 
     'xSUSE Linux Enterprise Server': {
 	'xSLES 12 SP4': 'xSuse_Linux_Enterprise_Server_12_SP4_Package_List.json',
