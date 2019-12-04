@@ -576,7 +576,7 @@
 {"packageName" : "c-ares", "version" : "1.10.0"},
 {"packageName" : "c-ares-devel", "version" : "1.10.0"},
 {"packageName" : "ca-certificates", "version" : "2017.2.14"},
-{"packageName" : "ca-certificates", "version" : "2018.2.22"},
+{"packageName" : "ca-certificates", "version" : "2019.2.32"},
 {"packageName" : "cachefilesd", "version" : "0.10.9"},
 {"packageName" : "cairo", "version" : "1.14.8"},
 {"packageName" : "cairo", "version" : "1.15.12"},
