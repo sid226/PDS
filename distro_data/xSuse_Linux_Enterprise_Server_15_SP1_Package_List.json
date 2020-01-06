@@ -35259,4 +35259,5 @@
 {"packageName":"terminfo-base", "version":"6.1-lp151.5.41"},
 {"packageName":"update-alternatives", "version":"1.19.0.4-lp151.3.67"},
 {"packageName":"util-linux", "version":"2.33.1-lp151.2.23"},
-{"packageName":"zypper", "version":"1.14.27-lp151.1.2"}]
+{"packageName":"zypper", "version":"1.14.27-lp151.1.2"}
+]
