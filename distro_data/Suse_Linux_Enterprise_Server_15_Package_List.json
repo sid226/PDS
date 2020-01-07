@@ -2780,6 +2780,8 @@
 {"packageName":"libtasn1-devel", "version":"4.13-2.15"},
 {"packageName":"libtcmalloc4", "version":"2.5-4.12"},
 {"packageName":"libtcmu2", "version":"1.3.0-1.29"},
+{"packageName":"libtcnative-1-0", "version":"1.2.23-1.3.1"},
+{"packageName":"libtcnative-1-0-devel", "version":"1.2.23-1.3.1"},
 {"packageName":"libtcti-device0", "version":"1.3.0-1.14"},
 {"packageName":"libtcti-socket0", "version":"1.3.0-1.14"},
 {"packageName":"libtcti-tabrmd0", "version":"1.2.0-1.18"},
