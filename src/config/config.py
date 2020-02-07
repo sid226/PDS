@@ -59,7 +59,8 @@ SUPPORTED_DISTROS = {
         'zRHEL 7.5': 'RHEL_7_5_Package_List.json',
         'zRHEL 7.6': 'RHEL_7_6_Package_List.json',
         'zRHEL 7.7': 'RHEL_7_7_Package_List.json',
-        'zRHEL 8.0': 'RHEL_8_Package_List.json'
+        'zRHEL 8.0': 'RHEL_8_Package_List.json',
+        'zRHEL 8.1': 'RHEL_8_1_Package_List.json'
         }
 
 
