@@ -29,7 +29,7 @@
 
       <div class="input-group searchbuttons">
         <input type="text" id="searchtext" class="form-control" style="width:200px;" autocomplete="on" placeholder="Enter Package Name" ng-model="package_name" ng-keyup="searchPackagesFromText($event)" />
-        <input type="button" id="fuzzySearch" class="btn btn-small btn-primary" value="Search" title="package Name in search should be more than two characters long" ng-click="searchPackages(null, 'fuzzySearch',false);" ng-disabled="package_name.length <= 2" />
+        <input type="button" id="fuzzySearch" class="btn btn-small btn-primary" value="Search" title="package Name in search should be more than two characters long" ng-click="searchPackages(null, 'fuzzySearch',false);" ng-disabled="package_name.length <= 1" />
         <a class="btn btn-small btn-info"  href="javascript:void(0);" ng-click="searchPackages(null, 'exactSearch', true);" ng-hide="package_name.length <= 0">Search Exact</a>
       </div>
       <div class="h6">         
