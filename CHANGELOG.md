@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.14
+## Enchancements
+- Added UI fix - change the search limit from 3 to 2 characters.
+
 ## v1.5.13
 ## Enchancements
 - Updated supported Data files
