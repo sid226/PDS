@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.15
+## Enchancements
+- Updated supported Data files
+- Added SLES 12-SP5
+- removed ubuntu 19.04 
+
 ## v1.5.14
 ## Enchancements
 - Added UI fix - change the search limit from 3 to 2 characters.
