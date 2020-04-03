@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.16
+## Enchancements
+- Updated supported Data files
+- Added RHEL 7.8
+
 ## v1.5.15
 ## Enchancements
 - Updated supported Data files
