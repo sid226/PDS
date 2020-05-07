@@ -1,5 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## v1.5.17
+## Enchancements
+-- Updated Data files
+-- Added RHEL 8.2, Ubuntu 20.04
+-- Removed RHEL 6.10/7.4/7.5
 
 ## v1.5.16
 ## Enchancements
