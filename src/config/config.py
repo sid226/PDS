@@ -54,12 +54,12 @@ SUPPORTED_DISTROS = {
         'zSLES 15 SP1': 'SUSE_Package_Hub_SLES_15_SP1.json'
     },
     
-    'xRHEL': {
-        'xRHEL 7.6': 'xRHEL_7_6_Package_List.json',
-        'xRHEL 7.7': 'xRHEL_7_7_Package_List.json',
-        'xRHEL 7.8': 'xRHEL_7_8_Package_List.json',
-        'xRHEL 8.1': 'xRHEL_8_1_Package_List.json',
-        'xRHEL 8.2': 'xRHEL_8_2_Package_List.json'
+    'zRHEL': {
+        'zRHEL 7.6': 'RHEL_7_6_Package_List.json',
+        'zRHEL 7.7': 'RHEL_7_7_Package_List.json',
+        'zRHEL 7.8': 'RHEL_7_8_Package_List.json',
+        'zRHEL 8.1': 'RHEL_8_1_Package_List.json',
+        'zRHEL 8.2': 'RHEL_8_2_Package_List.json'
         },
         'xUbuntu': {
         'xUbuntu 16.04': 'xUbuntu_16_04_Package_List.json',
