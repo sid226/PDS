@@ -340,7 +340,8 @@ var HomeController = function($scope) {
         if($scope.package_name.length < 1){
             return;
         }
-        api_request_url = 'searchPackages?search_term='+$scope.package_name+'&exact_match='+$scope.exact_match+'&search_bit_flag='+ $scope.search_bit_flag;
+        $scope.package_name_send=encodeURIComponent($scope.package_name);
+        api_request_url = 'searchPackages?search_term='+$scope.package_name_send+'&exact_match='+$scope.exact_match+'&search_bit_flag='+ $scope.search_bit_flag;
         
         if ($scope.forced_stop || $scope.prev_url == '' || $scope.prev_url != api_request_url){
             $scope.prev_url = api_request_url;

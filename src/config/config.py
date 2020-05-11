@@ -37,7 +37,8 @@ SUPPORTED_DISTROS = {
     'zUbuntu': {
         'zUbuntu 16.04': 'Ubuntu_16_04_Package_List.json',
         'zUbuntu 18.04': 'Ubuntu_18_04_Package_List.json',
-        'zUbuntu 19.10': 'Ubuntu_19_10_Package_List.json'
+        'zUbuntu 19.10': 'Ubuntu_19_10_Package_List.json',
+        'zUbuntu 20.04': 'Ubuntu_20_04_Package_List.json'
     }, 
     'zSUSE Linux Enterprise Server': {
 	'zSLES 12 SP4': 'Suse_Linux_Enterprise_Server_12_SP4_Package_List.json',
@@ -54,14 +55,11 @@ SUPPORTED_DISTROS = {
     },
     
     'zRHEL': {
-        'zRHEL 6.10': 'RHEL_6_10_Package_List.json',
-        'zRHEL 7.4': 'RHEL_7_4_Package_List.json',
-        'zRHEL 7.5': 'RHEL_7_5_Package_List.json',
         'zRHEL 7.6': 'RHEL_7_6_Package_List.json',
         'zRHEL 7.7': 'RHEL_7_7_Package_List.json',
         'zRHEL 7.8': 'RHEL_7_8_Package_List.json',
-        'zRHEL 8.0': 'RHEL_8_Package_List.json',
-        'zRHEL 8.1': 'RHEL_8_1_Package_List.json'
+        'zRHEL 8.1': 'RHEL_8_1_Package_List.json',
+        'zRHEL 8.2': 'RHEL_8_2_Package_List.json'
         }
 
 
