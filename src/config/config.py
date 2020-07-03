@@ -37,11 +37,9 @@ SUPPORTED_DISTROS = {
     'zUbuntu': {
         'zUbuntu 16.04': 'Ubuntu_16_04_Package_List.json',
         'zUbuntu 18.04': 'Ubuntu_18_04_Package_List.json',
-        'zUbuntu 19.10': 'Ubuntu_19_10_Package_List.json',
         'zUbuntu 20.04': 'Ubuntu_20_04_Package_List.json'
     }, 
     'zSUSE Linux Enterprise Server': {
-	'zSLES 12 SP4': 'Suse_Linux_Enterprise_Server_12_SP4_Package_List.json',
     'zSLES 12 SP5': 'Suse_Linux_Enterprise_Server_12_SP5_Package_List.json',
 	'zSLES 15'    : 'Suse_Linux_Enterprise_Server_15_Package_List.json',
     'zSLES 15 SP1': 'Suse_Linux_Enterprise_Server_15_SP1_Package_List.json'

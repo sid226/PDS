@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.19
+## Enchancements
+-- Updated Data files
+-- Removed Ubuntu 19.10,SLES 12 SP4
+
 ## v1.5.18
 ## Enchancements
 -- Updated Data files
