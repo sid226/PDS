@@ -452,6 +452,7 @@
 {"packageName": "pdns-recursor", "version": "4.1.8-13.1"},
 {"packageName": "pdns-recursor", "version": "4.1.8-14.1"},
 {"packageName": "pdns-recursor", "version": "4.1.16-19.1"},
+{"packageName": "pdns-recursor", "version": "4.1.17-22.1"},
 {"packageName": "perl-File-Copy-Recursive", "version": "0.38-2.1"},
 {"packageName": "perl-File-Copy-Recursive", "version": "0.38-3.1"},
 {"packageName": "perl-GD", "version": "2.56-2.1"},
