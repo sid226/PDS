@@ -15,7 +15,7 @@
         What is PDS?
       </div>
       <div class="list-group-item" ng-show="questionState(1)">
-        <p>PDS, or Package Distribution Search tool, helps you to search for available packages across OS distributions in a single user interface. Current version of PDS is v1.5.20</p>
+        <p>PDS, or Package Distribution Search tool, helps you to search for available packages across OS distributions in a single user interface. Current version of PDS is v1.5.21</p>
       </div>
       <div class="list-group-item list-group-item-info ng-class:{'active': questionState(2), 'glyphicon-minus':questionState(2), 'glyphicon-plus':!questionState(2)};"  ng-click="clickQuestion(2)"> <!--ng-class="[list-group-item, { 'active':questionState(2) } ]"-->
         Which operating systems does PDS support?
@@ -23,7 +23,7 @@
       <div class="list-group-item" ng-show="questionState(2)">
         <p>Currently, PDS supports the following operating systems:
         <ul>
-            <li>SUSE Linux Enterprise Server (12 SP5, 15, 15 SP1)</li>
+            <li>SUSE Linux Enterprise Server (12 SP5, 15, 15 SP1, 15 SP2)</li>
             <li>Ubuntu (16.04,18.04,20.04)</li>
             <li>Red Hat Enterprise Linux 7.6/7.7/7.8/8.1/8.2</li>
         </ul></p>
@@ -35,7 +35,9 @@
         <p>More details of packages can be obtained directly from following links provided by respective distros.</p>
         <ul>
           <li><a href="https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12/#InfraPackArch.SystemZ" target="blank">SUSE Linux Enterprise Server 12</a></li>
-<li><a href="https://www.suse.com/releasenotes/x86_64/SUSE-SLES/15/#InfraPackArch.SystemZ" target="blank">SUSE Linux Enterprise Server 15</a></li>
+          <li><a href="https://www.suse.com/releasenotes/s390x/SUSE-SLES/15/" target="blank">SUSE Linux Enterprise Server 15</a></li>
+          <li><a href="https://www.suse.com/releasenotes/s390x/SUSE-SLES/15-SP1/" target="blank">SUSE Linux Enterprise Server 15 SP1</a></li>
+          <li><a href="https://www.suse.com/releasenotes/s390x/SUSE-SLES/15-SP2/" target="blank">SUSE Linux Enterprise Server 15 SP2</a></li>
           <li><a href="https://packagehub.suse.com/#packages" target="blank">SUSE Package Hub</a></li>
           <li><a href="https://launchpad.net/ubuntu/xenial/s390x/" target="blank">Ubuntu 16.04</a></li>
           <li><a href="https://launchpad.net/ubuntu/bionic/s390x" target="blank">Ubuntu 18.04</a></li>

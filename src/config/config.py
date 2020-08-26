@@ -42,14 +42,16 @@ SUPPORTED_DISTROS = {
     'zSUSE Linux Enterprise Server': {
     'zSLES 12 SP5': 'Suse_Linux_Enterprise_Server_12_SP5_Package_List.json',
 	'zSLES 15'    : 'Suse_Linux_Enterprise_Server_15_Package_List.json',
-    'zSLES 15 SP1': 'Suse_Linux_Enterprise_Server_15_SP1_Package_List.json'
+    'zSLES 15 SP1': 'Suse_Linux_Enterprise_Server_15_SP1_Package_List.json',
+    'zSLES 15 SP2': 'Suse_Linux_Enterprise_Server_15_SP2_Package_List.json'
     },
     'zSUSE Package Hub': {
         'zSLES 12 SP1': 'SUSE_Package_Hub_SLES_12_SP1.json',
         'zSLES 12 SP2': 'SUSE_Package_Hub_SLES_12_SP2.json',
         'zSLES 12 SP3': 'SUSE_Package_Hub_SLES_12_SP3.json',
         'zSLES 15': 'SUSE_Package_Hub_SLES_15.json',
-        'zSLES 15 SP1': 'SUSE_Package_Hub_SLES_15_SP1.json'
+        'zSLES 15 SP1': 'SUSE_Package_Hub_SLES_15_SP1.json',
+        'zSLES 15 SP2': 'SUSE_Package_Hub_SLES_15_SP2.json'
     },
     
     'zRHEL': {
