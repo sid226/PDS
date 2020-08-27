@@ -45,4 +45,5 @@
 {"packageName": "singularity", "version": "2.3.2-8.1"},
 {"packageName": "singularity", "version": "2.6.1-14.1"},
 {"packageName": "singularity", "version": "2.6.1-17.1"},
-{"packageName": "sox", "version": "14.4.2-5.1"}]
+{"packageName": "sox", "version": "14.4.2-5.1"},
+{"packageName": "wireguard-tools", "version": "1.0.20200513-2.1"}]

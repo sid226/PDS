@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.21
+## Enchancements
+-- Updated Data files
+-- Added SLES 15-SP2
+
 ## v1.5.20
 ## Enchancements
 -- Updated Data files

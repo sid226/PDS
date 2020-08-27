@@ -456,4 +456,5 @@
 {"packageName": "telepathy-logger-qt5", "version": "15.04.0-2.1"},
 {"packageName": "threadweaver", "version": "5.32.0-2.1"},
 {"packageName": "umbrello", "version": "17.04.2-2.1"},
+{"packageName": "wireguard-tools", "version": "1.0.20200513-2.1"},
 {"packageName": "yakuake", "version": "3.0.4-2.1"}]
