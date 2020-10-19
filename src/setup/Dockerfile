@@ -13,6 +13,10 @@
 # Test in the browser by using the following url:
 # http://<hostname>:<port_number>/
 # http://<hostname>:<port_number>/pds
+#
+# Or by running the provided unit-tests:
+# cd /opt/PDS/src/tests
+# pytest 
 ########################################################################################
 
 # Base image
@@ -27,23 +31,25 @@
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
-    python \
-    python-pip \
+    python3 \
+    python3-pip \
     gcc \
     git \
-    python-dev \
+    python3-dev \
     libssl-dev \
     libffi-dev \
     cron \
-    python-lxml \
+    python3-lxml \
     apache2 \
-    libapache2-mod-wsgi \
-
-&&  pip install 'cryptography==1.4' \
+    libapache2-mod-wsgi-py3 \
+    
+&&  pip3 install 'cffi==1.11.5' \
+    cryptography \
     Flask \
     launchpadlib \
     simplejson \
-    logging
+    requests \
+    pytest
 
 
 #Set Environmental Variables
@@ -52,11 +58,9 @@ ENV PATH=/usr/local/bin:$PATH
 RUN sh -c "echo 'export PATH=/usr/local/bin:$PATH' > /etc/profile.d/alternate_install_path.sh"
 
 # Clone PDS from git
-
 RUN  cd /opt/ \
 && git clone https://github.com/linux-on-ibm-z/PDS.git \
 && cd PDS \
-&& git checkout v1.4 \
 
 
 # Set Environmental Variables
@@ -92,4 +96,3 @@ EXPOSE 80
 CMD ["apachectl","-D", "FOREGROUND"]
 
 # End of Dockerfile
-

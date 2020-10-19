@@ -16,14 +16,13 @@ _**NOTE:**_
 * For Ubuntu (16.04, 17.04, 17.10):
 
         sudo apt-get update
-        sudo apt-get install -y python python-pip gcc git python-dev libssl-dev libffi-dev cron python-lxml apache2 libapache2-mod-wsgi
-        sudo pip install 'cryptography==1.4' Flask launchpadlib simplejson logging
+        sudo apt-get install -y python3 python3-pip gcc git python3-dev libssl-dev libffi-dev cron python3-lxml apache2 libapache2-mod-wsgi-py3
+        sudo pip3 install 'cffi==1.11.5' cryptography Flask launchpadlib simplejson requests pytest
 
 * For SLES (12 SP1, 12 SP2, 12 SP3):
 
-        sudo zypper install -y python python-setuptools gcc git libffi-devel python-devel openssl openssl-devel cronie python-xml pyxml tar wget aaa_base which w3m apache2 apache2-devel apache2-worker apache2-mod_wsgi
-        sudo easy_install pip
-        sudo pip install 'cryptography==1.4' Flask launchpadlib simplejson logging
+        sudo zypper install -y python3 python3-pip python3-setuptools gcc git libffi-devel python3-devel openssl openssl-devel cronie python3-lxml tar wget aaa_base which w3m apache2 apache2-devel apache2-worker apache2-mod_wsgi-python3
+        sudo pip3 install cryptography launchpadlib simplejson Flask pytest
 
 * if "/usr/local/bin" is not part of $PATH add it to the path:
 
@@ -96,7 +95,11 @@ Note: In case PDS code is already checked out, do the following for latest updat
 
 ###  Step 5: Verify that the PDS server is up and running
 
-```http://server_ip_or_fully_qualified_domain_name:port_number/pds```
+```http://server_ip_or_fully_qualified_domain_name:port_number/pds``` <br />
+
+(Alternatively, you can check with unittesting) <br />
+```cd PDS/src/tests``` <br />
+```pytest```
 
 _**NOTE:**_ 
 

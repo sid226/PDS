@@ -1,1 +1,1 @@
-from package_search import PackageSearch
+from .package_search import PackageSearch

@@ -1,10 +1,9 @@
 import json
 import os
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import collections
 import copy 
 import math
-from sets import Set
 from config import DATA_FILE_LOCATION, DISABLE_PAGINATION, MAX_RECORDS_TO_CONCAT, LOGGER, MAX_RECORDS_TO_SEND, CACHE_SIZE
 from config import SUPPORTED_DISTROS
 
@@ -30,14 +29,14 @@ class PackageSearch:
         '''
         LOGGER.debug('loadSupportedDistros: In loadSupportedDistros')
         
-        if(len(cls.DISTRO_BIT_MAP.keys()) > 0):
+        if(len(list(cls.DISTRO_BIT_MAP.keys())) > 0):
             return cls.DISTRO_BIT_MAP
             
         bitFlag = 1        
         distroRecord = {}
-        for supportedDistroName in SUPPORTED_DISTROS.keys():
+        for supportedDistroName in list(SUPPORTED_DISTROS.keys()):
             for distroVersion in sorted(SUPPORTED_DISTROS[supportedDistroName].keys()):
-                if(not cls.DISTRO_BIT_MAP.has_key(supportedDistroName)):
+                if(supportedDistroName not in cls.DISTRO_BIT_MAP):
                     cls.DISTRO_BIT_MAP[supportedDistroName] = {}
                 cls.DISTRO_BIT_MAP[supportedDistroName][distroVersion] = bitFlag
                 bitFlag += bitFlag
@@ -73,7 +72,7 @@ class PackageSearch:
         package_data = {};
         cachedPackage = {}
         
-        for distroName in SUPPORTED_DISTROS.keys():
+        for distroName in list(SUPPORTED_DISTROS.keys()):
             for distroVersion in sorted(SUPPORTED_DISTROS[distroName].keys()):
                 distro_file = SUPPORTED_DISTROS[distroName][distroVersion]
             
@@ -85,7 +84,7 @@ class PackageSearch:
                         pkg_key = pkg["packageName"] + '_' + pkg["version"]
                     except Exception as ex:
                         LOGGER.error('preparePackageData: key not found for package %s' % str(ex))
-                    if not package_data.has_key(pkg_key):
+                    if pkg_key not in package_data:
                         cachedPackage = {}
                         cachedPackage["P"] = pkg["packageName"]
                         cachedPackage["S"] = cachedPackage["P"].lower().upper()
@@ -98,7 +97,7 @@ class PackageSearch:
                         cachedPackage[distroName] = [distroVersion]
                         package_data[pkg_key] = cachedPackage
                     else:
-                        if not package_data[pkg_key].has_key(distroName):
+                        if distroName not in package_data[pkg_key]:
                             package_data[pkg_key][distroName] = [distroVersion]
                             package_data[pkg_key]['B'] += cls.DISTRO_BIT_MAP[distroName][distroVersion]
                         else:
@@ -106,7 +105,7 @@ class PackageSearch:
                                 package_data[pkg_key][distroName].append(distroVersion)
                                 package_data[pkg_key]['B'] += cls.DISTRO_BIT_MAP[distroName][distroVersion]
                                 
-        json_data = package_data.values()
+        json_data = list(package_data.values())
 
         return json_data
 
@@ -135,7 +134,7 @@ class PackageSearch:
     #searchPackages - API searches for given search term in packages array and returns matching results
     def searchPackages(self, search_term, exact_match, search_bit_flag, page_number = 0):
         LOGGER.debug('searchPackages: In function')
-        search_term = urllib.unquote(search_term)
+        search_term = urllib.parse.unquote(search_term)
 
         if(len(search_term) == 0 or search_term.replace('*','') == ''):
             final_data = {
@@ -166,22 +165,22 @@ class PackageSearch:
         search_term_ucase = search_term.upper()
        
         preliminary_results = {}
-        if( self.INSTANCE.local_cache.has_key(cache_key) == False ):
+        if( (cache_key in self.INSTANCE.local_cache) == False ):
             LOGGER.debug('searchPackages: Not available in cache, so make fresh search')
             if (exact_match.lower() == 'true'):
                 LOGGER.debug('searchPackages: Doing exact search')
-                preliminary_results = filter(lambda s: s['P'] == search_term and (s['B'] & search_bit_flag) > 0, self.INSTANCE.package_data)
+                preliminary_results = [s for s in self.INSTANCE.package_data if s['P'] == search_term and (s['B'] & search_bit_flag) > 0]
             elif search_anywhere_in_packages:
                 LOGGER.debug('searchPackages: Doing Anywhere Search')
-                preliminary_results = filter(lambda s: search_term_ucase in s['S'] and (s['B'] & search_bit_flag) > 0, self.INSTANCE.package_data)
+                preliminary_results = [s for s in self.INSTANCE.package_data if search_term_ucase in s['S'] and (s['B'] & search_bit_flag) > 0]
             elif search_packages_begin_with:
                 LOGGER.debug('searchPackages: Find names that begin with')
-                preliminary_results = filter(lambda s: str(s['S']).startswith(search_term_ucase) and (s['B'] & search_bit_flag) > 0, self.INSTANCE.package_data)
+                preliminary_results = [s for s in self.INSTANCE.package_data if str(s['S']).startswith(search_term_ucase) and (s['B'] & search_bit_flag) > 0]
             elif search_packages_end_with:
                 LOGGER.debug('searchPackages: Find names that end with')
-                preliminary_results = filter(lambda s: str(s['S']).endswith(search_term_ucase) and (s['B'] & search_bit_flag) > 0, self.INSTANCE.package_data)
+                preliminary_results = [s for s in self.INSTANCE.package_data if str(s['S']).endswith(search_term_ucase) and (s['B'] & search_bit_flag) > 0]
 
-            final_results = copy.deepcopy(preliminary_results); #Deep Copy is required since we just need to remove the "S" field from returnable result set
+            final_results = copy.deepcopy(preliminary_results); #Deep Copy is required since we just need to remove the "S" field from returnable result 
             for pkg in final_results:
                 del pkg['S']
                 
@@ -189,7 +188,7 @@ class PackageSearch:
             
             if(len(final_results) > MAX_RECORDS_TO_SEND): #This is a large result set so add it to cache
                 LOGGER.debug('searchPackages: Add results to cache')
-                if(len(self.INSTANCE.local_cache.keys()) >= CACHE_SIZE): #CACHE_SIZE is breached so remove oldest cached object
+                if(len(list(self.INSTANCE.local_cache.keys())) >= CACHE_SIZE): #CACHE_SIZE is breached so remove oldest cached object
                     #LOGGER.debug('searchPackages: Cache full. So remove the oldest item. Total of Cached Items: %s' % (len(self.INSTANCE.local_cache.keys()))
                     self.INSTANCE.local_cache.pop(self.INSTANCE.cache_keys[0],None) #self.INSTANCE.cache_keys[0] has the Oldest Cache Key
                     self.INSTANCE.cache_keys.remove(self.INSTANCE.cache_keys[0]) #Remoe the cache_key from cache_keys for it is removed from local_cache
