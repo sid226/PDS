@@ -35,9 +35,9 @@ DEBUG_LEVEL = logging.ERROR
 
 SUPPORTED_DISTROS = {
     'Ubuntu': {
-        'Ubuntu 16.04': 'Ubuntu_16_04_Package_List.json',
         'Ubuntu 18.04': 'Ubuntu_18_04_Package_List.json',
-        'Ubuntu 20.04': 'Ubuntu_20_04_Package_List.json'
+        'Ubuntu 20.04': 'Ubuntu_20_04_Package_List.json',
+        'Ubuntu 20.10': 'Ubuntu_20_10_Package_List.json'
     }, 
     'SUSE Linux Enterprise Server': {
     'SLES 12 SP5': 'Suse_Linux_Enterprise_Server_12_SP5_Package_List.json',
@@ -55,9 +55,9 @@ SUPPORTED_DISTROS = {
     },
     
     'RHEL': {
-        'RHEL 7.6': 'RHEL_7_6_Package_List.json',
         'RHEL 7.7': 'RHEL_7_7_Package_List.json',
         'RHEL 7.8': 'RHEL_7_8_Package_List.json',
+        'RHEL 7.9': 'RHEL_7_9_Package_List.json',
         'RHEL 8.1': 'RHEL_8_1_Package_List.json',
         'RHEL 8.2': 'RHEL_8_2_Package_List.json'
         }
