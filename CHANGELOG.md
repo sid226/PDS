@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.23
+## Enchancements
+-- Updated Data files
+-- Added Ubuntu 20.10, RHEL 7.9
+-- Removed Ubuntu 16.04, RHEL 7.6
+
 ## v1.5.22
 ## Enchancements
 -- Updated Data files
