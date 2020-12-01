@@ -41,7 +41,6 @@ SUPPORTED_DISTROS = {
     }, 
     'SUSE Linux Enterprise Server': {
     'SLES 12 SP5': 'Suse_Linux_Enterprise_Server_12_SP5_Package_List.json',
-	'SLES 15'    : 'Suse_Linux_Enterprise_Server_15_Package_List.json',
     'SLES 15 SP1': 'Suse_Linux_Enterprise_Server_15_SP1_Package_List.json',
     'SLES 15 SP2': 'Suse_Linux_Enterprise_Server_15_SP2_Package_List.json'
     },
@@ -55,11 +54,11 @@ SUPPORTED_DISTROS = {
     },
     
     'RHEL': {
-        'RHEL 7.7': 'RHEL_7_7_Package_List.json',
         'RHEL 7.8': 'RHEL_7_8_Package_List.json',
         'RHEL 7.9': 'RHEL_7_9_Package_List.json',
         'RHEL 8.1': 'RHEL_8_1_Package_List.json',
-        'RHEL 8.2': 'RHEL_8_2_Package_List.json'
+        'RHEL 8.2': 'RHEL_8_2_Package_List.json',
+        'RHEL 8.3': 'RHEL_8_3_Package_List.json'
         }
 
 

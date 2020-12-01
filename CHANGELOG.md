@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.24
+## Enchancements
+-- Updated Data files
+-- Added RHEL 8.3
+-- Removed RHEL 7.7 ,Sles 15
+
 ## v1.5.23
 ## Enchancements
 -- Updated Data files
