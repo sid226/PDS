@@ -44,7 +44,7 @@ RUN apt-get update && apt-get install -y \
     libapache2-mod-wsgi-py3 \
     
 &&  pip3 install 'cffi==1.11.5' \
-    cryptography \
+    'cryptography==1.4' \
     Flask \
     launchpadlib \
     simplejson \
