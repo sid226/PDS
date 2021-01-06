@@ -9228,7 +9228,7 @@
 {"packageName":"gitinspector", "version":"0.4.4+dfsg-6"},
 {"packageName":"gitit", "version":"0.12.3.1+dfsg-1build4"},
 {"packageName":"gitk", "version":"1:2.25.1-1ubuntu3"},
-{"packageName":"gitlab-ce", "version":"13.6.3-ce.0"},
+{"packageName":"gitlab-ce", "version":"13.7.1-ce.0"},
 {"packageName":"gitlab-cli", "version":"1:2.0.1-1"},
 {"packageName":"gitlab-runner", "version":"11.2.0+dfsg-2ubuntu1"},
 {"packageName":"gitlab-shell", "version":"10.3.0+debian-3.1"},
