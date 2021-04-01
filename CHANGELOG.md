@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.28
+## Enchancements
+-- Updated Data files
+-- Added back ub 16.04
+-- Added back rhel 7.6,7.7,6.10,8.0
+-- Added back sles 12 SP3,SP4,15
+
 ## v1.5.27
 ## Enchancements
 -- Updated Data files
