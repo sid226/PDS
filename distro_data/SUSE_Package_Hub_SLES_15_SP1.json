@@ -1350,6 +1350,7 @@
 {"packageName":"fwnn", "version":"1.1.1a023-bp151.3.1"},
 {"packageName":"fwnn-devel", "version":"1.1.1a023-bp151.3.1"},
 {"packageName":"fwnncom", "version":"1.1.1a023-bp151.3.1"},
+{"packageName":"fwts", "version":"21.03.00-bp151.4.9.1"},
 {"packageName":"fwts", "version":"21.02.00-bp151.4.6.1"},
 {"packageName":"fwts", "version":"20.12.00-bp151.4.3.1"},
 {"packageName":"fwts", "version":"18.11.00-bp151.3.1"},
