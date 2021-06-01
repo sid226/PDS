@@ -51,6 +51,7 @@ var HomeController = function($scope) {
     // Get the package information data from the server and process it for display
     $.ajax({
         url: 'getSupportedDistros',
+        timeout:10000 ,
         success: function(data){
             try{
                 $scope.supported_oses_list = data;
