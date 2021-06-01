@@ -17,6 +17,7 @@ _**NOTE:**_
 
         sudo apt-get update
         sudo apt-get install -y python3 python3-pip gcc git python3-dev libssl-dev libffi-dev cron python3-lxml apache2 libapache2-mod-wsgi-py3
+        sudo pip3 install --upgrade pip==20.3.4
         sudo pip3 install 'cffi==1.11.5' 'cryptography==1.4' Flask launchpadlib simplejson requests pytest
 
 * For SLES (12 SP1, 12 SP2, 12 SP3):
