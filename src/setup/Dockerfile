@@ -43,6 +43,7 @@ RUN apt-get update && apt-get install -y \
     apache2 \
     libapache2-mod-wsgi-py3 \
     
+&&  pip3 install --upgrade pip==20.3.4 \
 &&  pip3 install 'cffi==1.11.5' \
     'cryptography==1.4' \
     Flask \
