@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.32
+## Enchancements
+-- Updated Data files
+-- Added sles 15.3
+-- Removed Ubuntu 20.10
+
 ## v1.5.31
 ## Enchancements
 -- Updated Data files
