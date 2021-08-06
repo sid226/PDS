@@ -34,11 +34,10 @@ Refer https://docs.python.org/2/library/logging.html for more information.
 DEBUG_LEVEL = logging.ERROR
 
 SUPPORTED_DISTROS = {
-    'Ubuntu': {
+       'Ubuntu': {
         'Ubuntu 16.04': 'Ubuntu_16_04_Package_List.json',
         'Ubuntu 18.04': 'Ubuntu_18_04_Package_List.json',
         'Ubuntu 20.04': 'Ubuntu_20_04_Package_List.json',
-        'Ubuntu 20.10': 'Ubuntu_20_10_Package_List.json',
         'Ubuntu 21.04': 'Ubuntu_21_04_Package_List.json'
     }, 
     'SUSE Linux Enterprise Server': {
@@ -47,7 +46,8 @@ SUPPORTED_DISTROS = {
     'SLES 12 SP5': 'Suse_Linux_Enterprise_Server_12_SP5_Package_List.json',
     'SLES 15': 'Suse_Linux_Enterprise_Server_15_Package_List.json',
     'SLES 15 SP1': 'Suse_Linux_Enterprise_Server_15_SP1_Package_List.json',
-    'SLES 15 SP2': 'Suse_Linux_Enterprise_Server_15_SP2_Package_List.json'
+    'SLES 15 SP2': 'Suse_Linux_Enterprise_Server_15_SP2_Package_List.json',
+    'SLES 15 SP3': 'Suse_Linux_Enterprise_Server_15_SP3_Package_List.json'
     },
     'SUSE Package Hub': {
     
@@ -71,6 +71,7 @@ SUPPORTED_DISTROS = {
         'RHEL 8.3': 'RHEL_8_3_Package_List.json',
         'RHEL 8.4': 'RHEL_8_4_Package_List.json'
         }
+
 
 
 }
