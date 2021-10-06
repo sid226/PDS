@@ -240,7 +240,7 @@ var HomeController = function($scope) {
                 }
             }
         }
-        $scope.search_bit_flag  = search_bit_flag;
+        $scope.search_bit_flag  = BigInt(search_bit_flag);
         $scope.error_message = '';
         if(psearch_exact === undefined){
             psearch_exact = false;
