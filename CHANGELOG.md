@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.35
+## Enchancements
+-- Updated Data files
+-- Added ubuntu 21.10
+
 ## v1.5.34
 ## Enchancements
 -- Updated Data files
