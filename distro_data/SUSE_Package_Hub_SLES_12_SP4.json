@@ -198,4 +198,6 @@
 {"packageName":"typelib-1_0-MateDesktop-2_0", "version":"1.22.1-2.1"},
 {"packageName":"typelib-1_0-MateMenu-2_0", "version":"1.22.0-2.3"},
 {"packageName":"typelib-1_0-Matekbd-1_0", "version":"1.22.0-2.1"},
-{"packageName":"typelib-1_0-Pluma-1_0", "version":"1.22.1-2.1"}]
+{"packageName":"typelib-1_0-Pluma-1_0", "version":"1.22.1-2.1"},
+{"packageName":"xdotool", "version":"3.20160805.1-2.1"},
+{"packageName":"xdotool-devel", "version":"3.20160805.1-2.1"}]
