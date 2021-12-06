@@ -5,7 +5,6 @@ All notable changes to this project will be documented in this file.
 ## Enchancements
 -- Updated Data files
 -- Added rhel 8.5
--- Removed rhel 8.3
 
 ## v1.5.35
 ## Enchancements
