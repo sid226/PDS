@@ -69,7 +69,8 @@ SUPPORTED_DISTROS = {
       "RHEL 8.1":"RHEL_8_1_Package_List.json",
       "RHEL 8.2":"RHEL_8_2_Package_List.json",
       "RHEL 8.3":"RHEL_8_3_Package_List.json",
-      "RHEL 8.4":"RHEL_8_4_Package_List.json"
+      "RHEL 8.4":"RHEL_8_4_Package_List.json",
+      "RHEL 8.5":"RHEL_8_5_Package_List.json"
    }
 }
 
