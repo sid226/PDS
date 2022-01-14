@@ -103,6 +103,7 @@
 {"packageName":"update-alternatives", "version":"1.19.0.4-2.48"},
 {"packageName":"util-linux", "version":"2.33.1-4.13.1"},
 {"packageName":"zypper", "version":"1.14.40-3.25.10"},
+{"packageName":"caja-devel", "version":"1.22.1-2.1"},
 {"packageName":"caja-engrampa", "version":"1.22.1-2.1"},
 {"packageName":"caja-extension-actions", "version":"3.4-2.1"},
 {"packageName":"caja-extension-atril", "version":"1.22.1-2.1"},
