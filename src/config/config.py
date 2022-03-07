@@ -34,82 +34,82 @@ Refer https://docs.python.org/2/library/logging.html for more information.
 DEBUG_LEVEL = logging.ERROR
 
 SUPPORTED_DISTROS = {
-   "zUbuntu":{
-      "zUbuntu 16.04":"Ubuntu_16_04_Package_List.json",
-      "zUbuntu 18.04":"Ubuntu_18_04_Package_List.json",
-      "zUbuntu 20.04":"Ubuntu_20_04_Package_List.json",
-      "zUbuntu 21.04":"Ubuntu_21_04_Package_List.json",
-      "zUbuntu 21.10":"Ubuntu_21_10_Package_List.json"
-   },
-   "zSUSE Linux Enterprise Server":{
-      "zSLES 12 SP3":"Suse_Linux_Enterprise_Server_12_SP3_Package_List.json",
-      "zSLES 12 SP4":"Suse_Linux_Enterprise_Server_12_SP4_Package_List.json",
-      "zSLES 12 SP5":"Suse_Linux_Enterprise_Server_12_SP5_Package_List.json",
-      "zSLES 15":"Suse_Linux_Enterprise_Server_15_Package_List.json",
-      "zSLES 15 SP1":"Suse_Linux_Enterprise_Server_15_SP1_Package_List.json",
-      "zSLES 15 SP2":"Suse_Linux_Enterprise_Server_15_SP2_Package_List.json",
-      "zSLES 15 SP3":"Suse_Linux_Enterprise_Server_15_SP3_Package_List.json"
-   },
-   "zSUSE Package Hub":{
-      "zSLES 12 SP3":"SUSE_Package_Hub_SLES_12_SP3.json",
-      "zSLES 12 SP4":"SUSE_Package_Hub_SLES_12_SP4.json",
-      "zSLES 12 SP5":"SUSE_Package_Hub_SLES_12_SP5.json",
-      "zSLES 15":"SUSE_Package_Hub_SLES_15.json",
-      "zSLES 15 SP1":"SUSE_Package_Hub_SLES_15_SP1.json",
-      "zSLES 15 SP2":"SUSE_Package_Hub_SLES_15_SP2.json",
-      "zSLES 15 SP3":"SUSE_Package_Hub_SLES_15_SP3.json"
-   },
-   "zRHEL":{
-      "zRHEL 6.10":"RHEL_6_10_Package_List.json",
-      "zRHEL 7.6":"RHEL_7_6_Package_List.json",
-      "zRHEL 7.7":"RHEL_7_7_Package_List.json",
-      "zRHEL 7.8":"RHEL_7_8_Package_List.json",
-      "zRHEL 7.9":"RHEL_7_9_Package_List.json",
-      "zRHEL 8.0":"RHEL_8_Package_List.json",
-      "zRHEL 8.1":"RHEL_8_1_Package_List.json",
-      "zRHEL 8.2":"RHEL_8_2_Package_List.json",
-      "zRHEL 8.3":"RHEL_8_3_Package_List.json",
-      "zRHEL 8.4":"RHEL_8_4_Package_List.json",
-      "zRHEL 8.5":"RHEL_8_5_Package_List.json"
-   },
-   "xUbuntu":{
-      "xUbuntu 16.04":"xUbuntu_16_04_Package_List.json",
-      "xUbuntu 18.04":"xUbuntu_18_04_Package_List.json",
-      "xUbuntu 20.04":"xUbuntu_20_04_Package_List.json",
-      "xUbuntu 21.04":"xUbuntu_21_04_Package_List.json",
-      "xUbuntu 21.10":"xUbuntu_21_10_Package_List.json"
-   },
-   "xSUSE Linux Enterprise Server":{
-      "xSLES 12 SP3":"xSuse_Linux_Enterprise_Server_12_SP3_Package_List.json",
-      "xSLES 12 SP4":"xSuse_Linux_Enterprise_Server_12_SP4_Package_List.json",
-      "xSLES 12 SP5":"xSuse_Linux_Enterprise_Server_12_SP5_Package_List.json",
-      "xSLES 15":"xSuse_Linux_Enterprise_Server_15_Package_List.json",
-      "xSLES 15 SP1":"xSuse_Linux_Enterprise_Server_15_SP1_Package_List.json",
-      "xSLES 15 SP2":"xSuse_Linux_Enterprise_Server_15_SP2_Package_List.json",
-      "xSLES 15 SP3":"xSuse_Linux_Enterprise_Server_15_SP3_Package_List.json"
-   },
-   "xSUSE Package Hub":{
-      "xSLES 12 SP3":"xSUSE_Package_Hub_SLES_12_SP3.json",
-      "xSLES 12 SP4":"xSUSE_Package_Hub_SLES_12_SP4.json",
-      "xSLES 12 SP5":"xSUSE_Package_Hub_SLES_12_SP5.json",
-      "xSLES 15":"xSUSE_Package_Hub_SLES_15.json",
-      "xSLES 15 SP1":"xSUSE_Package_Hub_SLES_15_SP1.json",
-      "xSLES 15 SP2":"xSUSE_Package_Hub_SLES_15_SP2.json",
-      "xSLES 15 SP3":"xSUSE_Package_Hub_SLES_15_SP3.json"
-   },
-   "xRHEL":{
-      "xRHEL 6.10":"xRHEL_6_10_Package_List.json",
-      "xRHEL 7.6":"xRHEL_7_6_Package_List.json",
-      "xRHEL 7.7":"xRHEL_7_7_Package_List.json",
-      "xRHEL 7.8":"xRHEL_7_8_Package_List.json",
-      "xRHEL 7.9":"xRHEL_7_9_Package_List.json",
-      "xRHEL 8.0":"xRHEL_8_Package_List.json",
-      "xRHEL 8.1":"xRHEL_8_1_Package_List.json",
-      "xRHEL 8.2":"xRHEL_8_2_Package_List.json",
-      "xRHEL 8.3":"xRHEL_8_3_Package_List.json",
-      "xRHEL 8.4":"xRHEL_8_4_Package_List.json",
-      "xRHEL 8.5":"xRHEL_8_5_Package_List.json"
-   }
+    "zUbuntu": {
+        "zUbuntu 16.04": "Ubuntu_16_04_Package_List.json",
+        "zUbuntu 18.04": "Ubuntu_18_04_Package_List.json",
+        "zUbuntu 20.04": "Ubuntu_20_04_Package_List.json",
+        "zUbuntu 21.04": "Ubuntu_21_04_Package_List.json",
+        "zUbuntu 21.10": "Ubuntu_21_10_Package_List.json"
+    },
+    "zSUSE Linux Enterprise Server": {
+        "zSLES 12 SP3": "Suse_Linux_Enterprise_Server_12_SP3_Package_List.json",
+        "zSLES 12 SP4": "Suse_Linux_Enterprise_Server_12_SP4_Package_List.json",
+        "zSLES 12 SP5": "Suse_Linux_Enterprise_Server_12_SP5_Package_List.json",
+        "zSLES 15": "Suse_Linux_Enterprise_Server_15_Package_List.json",
+        "zSLES 15 SP1": "Suse_Linux_Enterprise_Server_15_SP1_Package_List.json",
+        "zSLES 15 SP2": "Suse_Linux_Enterprise_Server_15_SP2_Package_List.json",
+        "zSLES 15 SP3": "Suse_Linux_Enterprise_Server_15_SP3_Package_List.json"
+    },
+    "zSUSE Package Hub": {
+        "zSLES 12 SP3": "SUSE_Package_Hub_SLES_12_SP3.json",
+        "zSLES 12 SP4": "SUSE_Package_Hub_SLES_12_SP4.json",
+        "zSLES 12 SP5": "SUSE_Package_Hub_SLES_12_SP5.json",
+        "zSLES 15": "SUSE_Package_Hub_SLES_15.json",
+        "zSLES 15 SP1": "SUSE_Package_Hub_SLES_15_SP1.json",
+        "zSLES 15 SP2": "SUSE_Package_Hub_SLES_15_SP2.json",
+        "zSLES 15 SP3": "SUSE_Package_Hub_SLES_15_SP3.json"
+    },
+    "zRHEL": {
+        "zRHEL 6.10": "RHEL_6_10_Package_List.json",
+        "zRHEL 7.6": "RHEL_7_6_Package_List.json",
+        "zRHEL 7.7": "RHEL_7_7_Package_List.json",
+        "zRHEL 7.8": "RHEL_7_8_Package_List.json",
+        "zRHEL 7.9": "RHEL_7_9_Package_List.json",
+        "zRHEL 8.0": "RHEL_8_Package_List.json",
+        "zRHEL 8.1": "RHEL_8_1_Package_List.json",
+        "zRHEL 8.2": "RHEL_8_2_Package_List.json",
+        "zRHEL 8.3": "RHEL_8_3_Package_List.json",
+        "zRHEL 8.4": "RHEL_8_4_Package_List.json",
+        "zRHEL 8.5": "RHEL_8_5_Package_List.json"
+    },
+    "xUbuntu": {
+        "xUbuntu 16.04": "xUbuntu_16_04_Package_List.json",
+        "xUbuntu 18.04": "xUbuntu_18_04_Package_List.json",
+        "xUbuntu 20.04": "xUbuntu_20_04_Package_List.json",
+        "xUbuntu 21.04": "xUbuntu_21_04_Package_List.json",
+        "xUbuntu 21.10": "xUbuntu_21_10_Package_List.json"
+    },
+    "xSUSE Linux Enterprise Server": {
+        "xSLES 12 SP3": "xSuse_Linux_Enterprise_Server_12_SP3_Package_List.json",
+        "xSLES 12 SP4": "xSuse_Linux_Enterprise_Server_12_SP4_Package_List.json",
+        "xSLES 12 SP5": "xSuse_Linux_Enterprise_Server_12_SP5_Package_List.json",
+        "xSLES 15": "xSuse_Linux_Enterprise_Server_15_Package_List.json",
+        "xSLES 15 SP1": "xSuse_Linux_Enterprise_Server_15_SP1_Package_List.json",
+        "xSLES 15 SP2": "xSuse_Linux_Enterprise_Server_15_SP2_Package_List.json",
+        "xSLES 15 SP3": "xSuse_Linux_Enterprise_Server_15_SP3_Package_List.json"
+    },
+    "xSUSE Package Hub": {
+        "xSLES 12 SP3": "xSUSE_Package_Hub_SLES_12_SP3.json",
+        "xSLES 12 SP4": "xSUSE_Package_Hub_SLES_12_SP4.json",
+        "xSLES 12 SP5": "xSUSE_Package_Hub_SLES_12_SP5.json",
+        "xSLES 15": "xSUSE_Package_Hub_SLES_15.json",
+        "xSLES 15 SP1": "xSUSE_Package_Hub_SLES_15_SP1.json",
+        "xSLES 15 SP2": "xSUSE_Package_Hub_SLES_15_SP2.json",
+        "xSLES 15 SP3": "xSUSE_Package_Hub_SLES_15_SP3.json"
+    },
+    "xRHEL": {
+        "xRHEL 6.10": "xRHEL_6_10_Package_List.json",
+        "xRHEL 7.6": "xRHEL_7_6_Package_List.json",
+        "xRHEL 7.7": "xRHEL_7_7_Package_List.json",
+        "xRHEL 7.8": "xRHEL_7_8_Package_List.json",
+        "xRHEL 7.9": "xRHEL_7_9_Package_List.json",
+        "xRHEL 8.0": "xRHEL_8_Package_List.json",
+        "xRHEL 8.1": "xRHEL_8_1_Package_List.json",
+        "xRHEL 8.2": "xRHEL_8_2_Package_List.json",
+        "xRHEL 8.3": "xRHEL_8_3_Package_List.json",
+        "xRHEL 8.4": "xRHEL_8_4_Package_List.json",
+        "xRHEL 8.5": "xRHEL_8_5_Package_List.json"
+    }
 }
 
 logging.basicConfig(format='%(asctime)s %(message)s', filename=LOG_FILE_LOCATION, level=DEBUG_LEVEL)
