@@ -38,7 +38,8 @@ SUPPORTED_DISTROS = {
       "Ubuntu 16.04":"Ubuntu_16_04_Package_List.json",
       "Ubuntu 18.04":"Ubuntu_18_04_Package_List.json",
       "Ubuntu 20.04":"Ubuntu_20_04_Package_List.json",
-      "Ubuntu 21.10":"Ubuntu_21_10_Package_List.json"
+      "Ubuntu 21.10":"Ubuntu_21_10_Package_List.json",
+      "Ubuntu 22.04":"Ubuntu_22_04_Package_List.json",
    },
    "SUSE Linux Enterprise Server":{
       "SLES 12 SP3":"Suse_Linux_Enterprise_Server_12_SP3_Package_List.json",
