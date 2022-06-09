@@ -78,7 +78,7 @@ SUPPORTED_DISTROS = {
       "xUbuntu 18.04":"xUbuntu_18_04_Package_List.json",
       "xUbuntu 20.04":"xUbuntu_20_04_Package_List.json",
       "xUbuntu 21.10":"xUbuntu_21_10_Package_List.json",
-      "xUbuntu 22.04":"xUbuntu_22_04_Package_List.json",
+      "xUbuntu 22.04":"xUbuntu_22_04_Package_List.json"
    },
    "xSUSE Linux Enterprise Server":{
       "xSLES 12 SP3":"xSuse_Linux_Enterprise_Server_12_SP3_Package_List.json",
