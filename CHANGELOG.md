@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## v1.5.42
+## Enchancements
+-- Updated Data files
+-- Added rhel 8.6
+
 ## v1.5.41
 ## Enchancements
 -- Updated Data files
